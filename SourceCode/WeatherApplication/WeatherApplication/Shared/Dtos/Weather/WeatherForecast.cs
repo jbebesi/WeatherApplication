@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WeatherApplication.Shared
+namespace WeatherApplication.Shared.Dtos.Weather
 {
     public class WeatherForecast
     {
