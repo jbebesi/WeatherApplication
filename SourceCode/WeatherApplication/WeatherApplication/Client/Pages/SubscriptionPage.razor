@@ -1,0 +1,17 @@
+﻿@page "/subscriptionPage"
+@using WeatherApplication.Shared.Dtos.Misc
+@inject HttpClient Http
+
+<h1>This is your subscriptions page!</h1>
+
+
+
+@code {
+    private Subscription[] subscriptions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        subscriptions = await Http.GetFromJsonAsync<Subscription[]>("Subscriptions");
+    }
+
+}
