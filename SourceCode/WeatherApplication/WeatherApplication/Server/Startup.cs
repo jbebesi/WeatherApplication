@@ -28,7 +28,7 @@ namespace WeatherApplication.Server
 
             services.AddControllersWithViews();
             services.AddScoped<IWeatherService, WeatherService>();
-            //services.AddScoped<IWeatherDataStore, WeatherDataStore>();
+            services.AddScoped<IWeatherDataStore, WeatherDataStore>();
             //services.AddScoped<IWeatherProvider, ConnectOpenWeatherMap>();
             //services.AddHttpClient<ConnectOpenWeatherMap>();
             services.AddRazorPages();

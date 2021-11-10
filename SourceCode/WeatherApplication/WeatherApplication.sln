@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Server",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Shared", "WeatherApplication\Shared\WeatherApplication.Shared.csproj", "{0E20E750-4C46-4054-A766-F6E68D3A5E0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubscriptionService", "SubscriptionService\SubscriptionService.csproj", "{C4EF4C01-02FD-44C0-912D-7E092393ED2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubscriptionService", "SubscriptionService\SubscriptionService.csproj", "{C4EF4C01-02FD-44C0-912D-7E092393ED2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
