@@ -26,13 +26,18 @@ namespace WeatherApplication.Server.Services.Tests
         {
             var logger = new Mock<ILogger<WeatherService>>();
             var store = new Mock<IWeatherDataStore>();
-
+            
             var service = new WeatherService(logger.Object, store.Object);
-
             var res = await service.GetWeatherForecastsAsync("Budapest");
-
+            
             Assert.IsNotNull(res);
+        }
 
+
+        [TestMethod()]
+        public async Task WeatherServiceTest_Failing()
+        {
+            Assert.Fail();
         }
     }
 }
