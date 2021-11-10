@@ -14,6 +14,8 @@ namespace WeatherApplication.Server.Services
         private readonly IWeatherDataStore _WeatherService;
         public WeatherService (ILogger<WeatherService> logger, IWeatherDataStore weatherDataStore)
         {
+            if(logger == null) throw new ArgumentNullException(nameof(logger));
+            if (weatherDataStore == null) throw new ArgumentNullException(nameof(weatherDataStore));
             _ILogger = logger;
             _WeatherService = weatherDataStore;
         }
