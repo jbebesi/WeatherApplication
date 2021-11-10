@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,13 @@ namespace WeatherApplication.Server.Services
 {
     public class WeatherService : IWeatherService
     {
+        private readonly ILogger<WeatherService> _ILogger;
+        private readonly IWeatherDataStore _WeatherService;
+        public WeatherService (ILogger<WeatherService> logger, IWeatherDataStore weatherDataStore)
+        {
+            _ILogger = logger;
+            _WeatherService = weatherDataStore;
+        }
         public async Task<IEnumerable<WeatherForecast>> GetWeatherForecastsAsync(string city)
         {
             return await Task.FromResult(new WeatherForecast[] { 
