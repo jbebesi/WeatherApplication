@@ -34,5 +34,12 @@ namespace WeatherApplication.Server.Services.Tests
             Assert.IsNotNull(res);
 
         }
+
+        [TestMethod()]
+        public void FaillingTest()
+        {
+            Assert.Fail(); 
+        }
+
     }
 }
