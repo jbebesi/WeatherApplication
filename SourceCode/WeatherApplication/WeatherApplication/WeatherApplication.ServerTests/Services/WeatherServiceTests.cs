@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using WeatherApplication.Server.Interfaces;
 using System.Threading.Tasks;
 
-namespace WeatherApplication.Server.Services.Tests
+namespace WeatherApplication.ServerTests.Services
 {
     [TestClass()]
     public class WeatherServiceTests
