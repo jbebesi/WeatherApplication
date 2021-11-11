@@ -6,12 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WeatherApp.Shared.Data;
 using WeatherApplication.Server.Dtos.OWM;
 using WeatherApplication.Server.Interfaces;
+using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Dtos.Weather;
 
-namespace WeatherApplication.Server.OpenWeatherMap
+namespace WeatherApplication.Server.Services.OWM
 {
     public class ConnectOpenWeatherMap : IWeatherProvider
     {
@@ -50,7 +50,7 @@ namespace WeatherApplication.Server.OpenWeatherMap
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message,ex);
+                _logger.LogError(ex.Message, ex);
             }
             return new WeatherData();
         }
