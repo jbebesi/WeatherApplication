@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using WeatherApplication.Server.Interfaces;
-using WeatherApplication.Server.OpenWeatherMap;
 using WeatherApplication.Server.Services;
 
 namespace WeatherApplication.Server
