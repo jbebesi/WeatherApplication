@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  weatherapplication.server:
+    image: ${DOCKER_REGISTRY-}weatherapplicationserver
+    build:
+      context: .
+      dockerfile: WeatherApplication/Server/Dockerfile
+
+  subscriptionservice:
+    image: ${DOCKER_REGISTRY-}subscriptionservice
+    build:
+      context: .
+      dockerfile: SubscriptionService/Dockerfile
+
