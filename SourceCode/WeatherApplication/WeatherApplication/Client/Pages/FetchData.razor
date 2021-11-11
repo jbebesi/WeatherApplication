@@ -1,6 +1,8 @@
 @page "/fetchdata"
+@using Microsoft.Extensions.Logging
 @using WeatherApplication.Shared.Dtos.Weather
 @inject HttpClient Http
+@inject ILogger<FetchData> _logger
 
 <h1>Weather forecast</h1>
 
@@ -40,6 +42,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        _logger.LogDebug("Test Log");
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
     }
 

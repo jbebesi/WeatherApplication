@@ -1,17 +1,36 @@
-﻿@page "/subscriptionPage"
+﻿@page "/subscriptionpage"
+@using Microsoft.Extensions.Logging
 @using WeatherApplication.Shared.Dtos.Misc
 @inject HttpClient Http
+@inject ILogger<SubscriptionPage> _logger
+@inject IJSRuntime _jsRuntime
 
 <h1>This is your subscriptions page!</h1>
+
+@if (subscriptions != null)
+{
+    <div>
+    @subscriptions.FirstName ,
+    @subscriptions.LastName ,
+    @subscriptions.SubscriberUntil 
+    </div>
+}
 
 
 
 @code {
-    private Subscription[] subscriptions;
+    private Subscription subscriptions;
 
     protected override async Task OnInitializedAsync()
     {
-        subscriptions = await Http.GetFromJsonAsync<Subscription[]>("Subscriptions");
+        try 
+        {
+            _logger.LogDebug("Subscription started");
+            subscriptions = await Http.GetFromJsonAsync<Subscription>("Subscriptions");
+        }
+        catch(Exception ex)
+        {
+            _logger.LogError(ex.Message, ex);
+        }
     }
-
 }

@@ -16,18 +16,18 @@ namespace SubscriptionService.Controllers
     {
 
         private readonly ILogger<SubscriptionsController> _logger;
-        private readonly ISubscriptionInterface isubscriptionInterface;
+        private readonly ISubscriptionService _iSubscriptionInterface;
 
-        public SubscriptionsController(ILogger<SubscriptionsController> logger, ISubscriptionInterface isubscriptionInterface)
+        public SubscriptionsController(ILogger<SubscriptionsController> logger, ISubscriptionService isubscriptionInterface)
         {
             _logger = logger;
-            this.isubscriptionInterface = isubscriptionInterface;
+            _iSubscriptionInterface = isubscriptionInterface;
         }
 
         [HttpGet]
         public Subscription Get()
         {
-            return this.isubscriptionInterface.GetSubscription("");
+            return _iSubscriptionInterface.GetSubscription("");
         }
     }
 }
