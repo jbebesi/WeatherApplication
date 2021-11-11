@@ -7,7 +7,7 @@ using WeatherApplication.Shared.Dtos.Misc;
 
 namespace SubscriptionService.Interfaces
 {
-    public interface ISubscriptionInterface
+    public interface ISubscriptionService
     {
         public Subscription GetSubscription(string subscriptionName);
     }

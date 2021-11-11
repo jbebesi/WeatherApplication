@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using WeatherApplication.Shared;
 using WeatherApplication.Shared.Dtos.Misc;
@@ -15,18 +18,26 @@ namespace WeatherApplication.Server.Controllers
     {
 
 
-        private readonly ILogger<SubscriptionsController> logger;
+        private readonly ILogger<SubscriptionsController> _logger;
 
         public SubscriptionsController(ILogger<SubscriptionsController> logger)
         {
-            this.logger = logger;
+            _logger = logger;
         }
 
-        //<IEnumerable<Subscription>>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<Subscription> Get()
         {
-            return Ok(new Subscription[] { new Subscription() { FirstName="Jo" , LastName = "Smith", MiddleName = "Jones", SubscriberUntil= DateTime.Now.AddDays(2), ID = 1 } });
+            try
+            {
+                var client = new HttpClient() { BaseAddress = new Uri("http://localhost:44725") };
+                return await client.GetFromJsonAsync<Subscription>("Subscriptions");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message,ex);
+                return null;
+            }
         }
     }
 }
