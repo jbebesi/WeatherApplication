@@ -35,11 +35,5 @@ namespace WeatherApplication.Server.Services.Tests
 
         }
 
-        [TestMethod()]
-        public void FaillingTest()
-        {
-            Assert.Fail(); 
-        }
-
     }
 }
