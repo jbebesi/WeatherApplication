@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  weatherapplication.server:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "6001:80"
+  subscriptionservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6002:80"
+
