@@ -30,7 +30,7 @@ namespace WeatherApplication.Server.Controllers
         {
             try
             {
-                var client = new HttpClient() { BaseAddress = new Uri("http://subscriptionservice:81") };
+                var client = new HttpClient() { BaseAddress = new Uri("http://subscriptionservice:80") };
                 return await client.GetFromJsonAsync<Subscription>("Subscriptions");
             }
             catch (Exception ex)
