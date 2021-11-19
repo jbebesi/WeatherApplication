@@ -7,9 +7,3 @@ services:
       context: .
       dockerfile: WeatherApplication/Server/Dockerfile
 
-  subscriptionservice:
-    image: ${DOCKER_REGISTRY-}subscriptionservice
-    build:
-      context: .
-      dockerfile: SubscriptionService/Dockerfile
-
