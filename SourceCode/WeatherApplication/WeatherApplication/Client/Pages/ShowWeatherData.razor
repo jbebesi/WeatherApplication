@@ -1,4 +1,4 @@
-@page "/fetchdata"
+@page "/showweatherdata"
 @using Microsoft.Extensions.Logging
 @using WeatherApplication.Shared.Dtos.Weather
 @inject HttpClient Http
@@ -42,8 +42,17 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        _logger.LogDebug("Test Log");
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        try
+        {
+            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        }
+        catch (Exception ex)
+        {
+            forecasts = new WeatherForecast[] { 
+                new WeatherForecast() { Date = DateTime.Now.AddHours(1), Summary = "Test1", TemperatureC = 30 },
+                new WeatherForecast() { Date = DateTime.Now.AddHours(2), Summary = "Test2", TemperatureC = 40 }};
+        }
+
     }
 
 }
