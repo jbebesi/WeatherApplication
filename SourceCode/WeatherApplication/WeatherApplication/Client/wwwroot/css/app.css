@@ -181,3 +181,9 @@ app {
         display: block;
     }
 }
+
+
+.actual-temp{
+    font-size: larger;
+    color: red;
+}
