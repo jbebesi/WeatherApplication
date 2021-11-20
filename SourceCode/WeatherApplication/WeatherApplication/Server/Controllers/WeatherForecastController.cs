@@ -24,7 +24,7 @@ namespace WeatherApplication.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> Get()
+        public async Task<WeatherForecastData> Get()
         {
             _logger.LogInformation("Get called");
             return await _weatherService.GetWeatherForecastsAsync("Budapest");
