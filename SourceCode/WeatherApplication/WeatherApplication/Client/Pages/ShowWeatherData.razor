@@ -2,55 +2,38 @@
 @using Microsoft.Extensions.Logging
 @using WeatherApplication.Shared.Dtos.Weather
 @inject HttpClient Http
-@inject ILogger<FetchData> _logger
+@inject ILogger<ShowWeatherData> _logger
 
-<h1>Weather forecast</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-@if (forecasts == null)
+@if (forecasts != null)
 {
-    <p><em>Loading...</em></p>
+    <h1>@forecasts.CityName ,@forecasts.CountryName</h1>
+    <WeatherApplication.Client.Components.MainWeatherData ForecastData="@forecasts"/>
 }
 else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToString("yyyy.MM.dd HH:mm")</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+{ 
+    <h1>Weather Data not loaded!</h1>
 }
 
+
 @code {
-    private WeatherForecast[] forecasts;
+    private WeatherForecastData forecasts;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+            forecasts = await Http.GetFromJsonAsync<WeatherForecastData>("WeatherForecast");
         }
         catch (Exception ex)
         {
-            forecasts = new WeatherForecast[] { 
-                new WeatherForecast() { Date = DateTime.Now.AddHours(1), Summary = "Test1", TemperatureC = 30 },
-                new WeatherForecast() { Date = DateTime.Now.AddHours(2), Summary = "Test2", TemperatureC = 40 }};
+            forecasts = new WeatherForecastData
+            {
+                CityName = "Something went wrong",
+                CountryName = "Exception",
+                Weather = new WeatherData[] {
+                    new WeatherData(){ DateTime = DateTime.Now , TemperatureFeelsLike = 25 , LooksLike = "Very exceptiony" , Temperature = 30 , LocationName ="Ex.Message" , WindDirection = 3 , WindSpeed = 12}
+                }
+            };
         }
 
     }
