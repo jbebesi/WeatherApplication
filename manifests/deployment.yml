@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: jbebesiweatherapplication 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jbebesiweatherapplication
+  template:
+    metadata:
+      labels:
+        app: jbebesiweatherapplication 
+    spec:
+      containers:
+        - name: jbebesiweatherapplication 
+          image: wettadev1.azurecr.io/jbebesiweatherapplication
+          ports:
+          - containerPort: 80
