@@ -1,0 +1,29 @@
+﻿@using WeatherApplication.Shared.Dtos.Weather
+
+
+<table>
+    <tbody>
+        <tr>
+            <td rowspan="3" class="actual-temp">@ForecastData.Weather[0].Temperature</td>
+        </tr>
+        <tr>
+            <td>@ForecastData.Weather[0].LooksLike</td>
+        </tr>
+        <tr>
+            <td>@ForecastData.Weather[0].TemperatureFeelsLike</td>
+        </tr>
+        <tr>
+            <td>@ForecastData.Weather[0].DateTime</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+@code {
+    [Parameter]
+    public WeatherForecastData ForecastData { get; set; }
+
+}

@@ -8,7 +8,7 @@ namespace WeatherApplication.Server.Interfaces
 {
     public interface IWeatherService
     {
-        public Task<IEnumerable<WeatherForecast>> GetWeatherForecastsAsync(string city);
+        public Task<WeatherForecastData> GetWeatherForecastsAsync(string city);
 
     }
 }

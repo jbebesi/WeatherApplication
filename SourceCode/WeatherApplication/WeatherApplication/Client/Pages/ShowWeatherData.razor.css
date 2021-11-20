@@ -1,0 +1,11 @@
+﻿body {
+}
+h1 {
+    color: blue;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+}
+.test{
+    background-color: red;
+    border-style: double;
+}
