@@ -1,10 +1,11 @@
 ﻿@page "/subscriptionpage"
 @using Microsoft.Extensions.Logging
 @using WeatherApplication.Shared.Dtos.Misc
+@using HttpClients
 @inject HttpClient Http
 @inject ILogger<SubscriptionPage> _logger
 
-<h1>This is your subscriptions page!</h1>
+<h1>This is your subscriptions page!2</h1>
 
 @if (subscriptions != null)
 {
@@ -22,13 +23,16 @@
 
     protected override async Task OnInitializedAsync()
     {
-        try 
+        try
         {
-            _logger.LogDebug("Subscription started");
+            Console.WriteLine("Subscription1");
+            //var client = new HttpClient { BaseAddress = new Uri("http://subscriptionservice:80") };
             subscriptions = await Http.GetFromJsonAsync<Subscription>("Subscriptions");
+            //subscriptions = await Http.GetSubscription("dummy");
         }
         catch(Exception ex)
         {
+            Console.WriteLine(ex.Message);
             _logger.LogError(ex.Message, ex);
         }
     }
