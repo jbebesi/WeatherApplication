@@ -6,8 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using System.Net.Http;
 using WeatherApplication.Server.Interfaces;
 using WeatherApplication.Server.Services;
+using WeatherApplication.Server.Services.OWM;
 
 namespace WeatherApplication.Server
 {
@@ -28,8 +30,8 @@ namespace WeatherApplication.Server
             services.AddControllersWithViews();
             services.AddScoped<IWeatherService, WeatherService>();
             services.AddScoped<IWeatherDataStore, WeatherDataStore>();
-            //services.AddScoped<IWeatherProvider, ConnectOpenWeatherMap>();
-            //services.AddHttpClient<ConnectOpenWeatherMap>();
+            services.AddScoped<IWeatherProvider, ConnectOpenWeatherMap>();
+            services.AddScoped<HttpClient>();
             services.AddRazorPages();
         }
 

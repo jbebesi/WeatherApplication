@@ -23,11 +23,19 @@ namespace WeatherApplication.Server.Controllers
             _weatherService = weatherProvider; 
         }
 
-        [HttpGet]
+        [HttpGet("{city}")]
+        public async Task<WeatherForecastData> Get(string city)
+        {
+            _logger.LogInformation("Get called");
+            return await _weatherService.GetWeatherForecastsAsync(city);
+        }
+        [HttpGet()]
         public async Task<WeatherForecastData> Get()
         {
             _logger.LogInformation("Get called");
-            return await _weatherService.GetWeatherForecastsAsync("Budapest");
+            var result = await _weatherService.GetWeatherForecastsAsync("");
+            result.CityName = "Get";
+            return result;
         }
     }
 }

@@ -1,43 +1,42 @@
 @page "/showweatherdata"
 @using Microsoft.Extensions.Logging
-@using WeatherApplication.Shared.Dtos.Weather
-@inject HttpClient Http
+@inject ShowWeatherDataViewModel viewModel
 @inject ILogger<ShowWeatherData> _logger
 
-@if (forecasts != null)
-{
-    <h1>@forecasts.CityName ,@forecasts.CountryName</h1>
-    <WeatherApplication.Client.Components.MainWeatherData ForecastData="@forecasts"/>
-    <WeatherApplication.Client.Components.ForecastGrid />
-    <div class="test">Test2</div>
-}
-else
-{ 
-    <h1>Weather Data not loaded!</h1>
-}
+<EditForm Model="@viewModel">
+    <InputSelect Value="@viewModel.SelectedCity" ValueExpression="@(()=>viewModel.SelectedCity)" ValueChanged="@((string value) => OnValueChanged(value ))">
+        @if (CityList != null)
+        {
+            @foreach (var city in CityList)
+            {
+                <option value="@city">@city</option>
+            }
+        }
+    </InputSelect>
+    @if (viewModel.Forecasts != null)
+    {
+        <h1 class="center">@viewModel.Forecasts.CityName ,@viewModel.Forecasts.CountryName</h1>
+
+        <WeatherApplication.Client.Components.MainWeatherData ForecastData="@viewModel.Forecasts" />
+        <WeatherApplication.Client.Components.ForecastGrid Data="@viewModel.Forecasts.Weather" />
+    }
+</EditForm>
 
 
-@code {
-    private WeatherForecastData forecasts;
+@code { 
+
+    string[] CityList;
 
     protected override async Task OnInitializedAsync()
     {
-        try
-        {
-            forecasts = await Http.GetFromJsonAsync<WeatherForecastData>("WeatherForecast");
-        }
-        catch (Exception ex)
-        {
-            forecasts = new WeatherForecastData
-            {
-                CityName = "Something went wrong",
-                CountryName = "Exception",
-                Weather = new WeatherData[] {
-                    new WeatherData(){ DateTime = DateTime.Now , TemperatureFeelsLike = 25 , LooksLike = "Very exceptiony" , Temperature = 30 , LocationName ="Ex.Message" , WindDirection = 3 , WindSpeed = 12}
-                }
-            };
-        }
-
+        CityList = await viewModel.GetCityList();
+        await base.OnInitializedAsync();
     }
 
+    async Task OnValueChanged(string val)
+    {
+        Console.WriteLine($"{val} - hit");
+        await viewModel.GetForecast(val);
+        StateHasChanged();
+    }
 }

@@ -7,7 +7,6 @@ namespace WeatherApplication.Server.Interfaces
 {
     public interface IWeatherProvider
     {
-        //List<CityData> CityList { get; }
         Task<WeatherData> GetCityData(string name);
         Task<WeatherData> GetLocationData(LocationData location);
         Task<WeatherForecastData> GetLocationForecast(LocationData location);
