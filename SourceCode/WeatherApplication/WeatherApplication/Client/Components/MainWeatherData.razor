@@ -1,0 +1,30 @@
+﻿@using WeatherApplication.Shared.Dtos.Weather
+
+
+<table width="100%">
+    <tbody>
+        <tr>
+            <td rowspan="4" class="actual-temp" width="50%">@ForecastData.Weather[0].Temperature</td>
+        </tr>
+        <tr>
+            <td width="50%">@ForecastData.Weather[0].LooksLike</td>
+        </tr>
+        <tr>
+            <td width="50%">@ForecastData.Weather[0].TemperatureFeelsLike</td>
+        </tr>
+        <tr>
+            <td width="50%">Last updated:@ForecastData.Weather[0].DateTime.ToString("HH:mm")</td>
+        </tr>
+
+    </tbody>
+</table>
+<div>Ic1 Ic2 Ic3 Ic4 Ic5 Ic6 Ic7 Ic8</div>
+
+
+
+
+@code {
+    [Parameter]
+    public WeatherForecastData ForecastData { get; set; }
+
+}

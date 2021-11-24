@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WeatherApplication.Shared.Dtos.Weather
 {
@@ -8,10 +9,13 @@ namespace WeatherApplication.Shared.Dtos.Weather
         {
             Temperature,
             Wind,
-            TemperatureFeelsLike
+            TemperatureFeelsLike,
+            WindDirection
         }
 
         public short Temperature { get; set; }
+        public short TemperatureMin { get; set; }
+        public short TemperatureMax { get; set; }
         public short TemperatureFeelsLike { get; set; }
         public string LooksLike { get; set; }
         public short WindSpeed { get; set; }
@@ -19,7 +23,7 @@ namespace WeatherApplication.Shared.Dtos.Weather
         public string LocationName { get; set; }
         public DateTime DateTime { get; set; }
 
-        public WeatherData(short nTemperature, short nTemperatureFeelsLike, string nLooksLike, short nWindSpeed, double nWindDirection, string nLocationName, DateTime nDateTime)
+        public WeatherData(short nTemperature, short nTemperatureFeelsLike, string nLooksLike, short nWindSpeed, double nWindDirection, string nLocationName, DateTime nDateTime, short nTempMax,short nTempMin)
         {
             Temperature = nTemperature;
             TemperatureFeelsLike = nTemperatureFeelsLike;
@@ -28,6 +32,8 @@ namespace WeatherApplication.Shared.Dtos.Weather
             WindDirection = nWindDirection;
             LocationName = nLocationName;
             DateTime = nDateTime;
+            TemperatureMax = nTempMax;
+            TemperatureMin = nTempMin;
         }
 
         public int this[DataType data]
@@ -39,6 +45,7 @@ namespace WeatherApplication.Shared.Dtos.Weather
                     DataType.Temperature => Temperature,
                     DataType.Wind => WindSpeed,
                     DataType.TemperatureFeelsLike => TemperatureFeelsLike,
+                    DataType.WindDirection => (int)WindDirection,
                     _ => throw new ArgumentException("Argument not supported:" + data.ToString()),
                 };
             }

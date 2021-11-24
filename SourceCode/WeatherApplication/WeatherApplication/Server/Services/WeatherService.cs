@@ -14,16 +14,12 @@ namespace WeatherApplication.Server.Services
         private readonly IWeatherDataStore _WeatherService;
         public WeatherService (ILogger<WeatherService> logger, IWeatherDataStore weatherDataStore)
         {
-            if(logger == null) throw new ArgumentNullException(nameof(logger));
-            if (weatherDataStore == null) throw new ArgumentNullException(nameof(weatherDataStore));
-            _ILogger = logger;
-            _WeatherService = weatherDataStore;
+            _ILogger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _WeatherService = weatherDataStore ?? throw new ArgumentNullException(nameof(weatherDataStore));
         }
-        public async Task<IEnumerable<WeatherForecast>> GetWeatherForecastsAsync(string city)
+        public async Task<WeatherForecastData> GetWeatherForecastsAsync(string city)
         {
-            return await Task.FromResult(new WeatherForecast[] { 
-                new WeatherForecast() { Date = DateTime.Now.AddHours(1) , Summary = "Temp 1" , TemperatureC = 12 } ,
-                new WeatherForecast() { Date = DateTime.Now.AddHours(2) , Summary = "Temp 2" , TemperatureC = 15 }});
+            return  await _WeatherService.GetWeatherForecastsAsync(city);
         }
     }
 }

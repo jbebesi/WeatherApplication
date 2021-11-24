@@ -1,0 +1,31 @@
+﻿@using WeatherApplication.Shared.Dtos.Weather;
+<table width="100%">
+    <thead>
+        <tr>
+            <th width="14%">MO</th>
+            <th width="14%">TU</th>
+            <th width="14%">WE</th>
+            <th width="14%">TH</th>
+            <th width="14%">FR</th>
+            <th width="14%">SA</th>
+            <th width="14%">SU</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < 4; i++)
+        {
+            <tr>
+                @for (int j = 0; j < 7; j++)
+                {
+                    <td width="14%">@Data[j][(WeatherData.DataType)i]</td>
+                }
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@code {
+    [Parameter]
+    public WeatherData[] Data { get; set; }
+}

@@ -1,0 +1,42 @@
+@page "/showweatherdata"
+@using Microsoft.Extensions.Logging
+@inject ShowWeatherDataViewModel viewModel
+@inject ILogger<ShowWeatherData> _logger
+
+<EditForm Model="@viewModel">
+    <InputSelect Value="@viewModel.SelectedCity" ValueExpression="@(()=>viewModel.SelectedCity)" ValueChanged="@((string value) => OnValueChanged(value ))">
+        @if (CityList != null)
+        {
+            @foreach (var city in CityList)
+            {
+                <option value="@city">@city</option>
+            }
+        }
+    </InputSelect>
+    @if (viewModel.Forecasts != null)
+    {
+        <h1 class="center">@viewModel.Forecasts.CityName ,@viewModel.Forecasts.CountryName</h1>
+
+        <WeatherApplication.Client.Components.MainWeatherData ForecastData="@viewModel.Forecasts" />
+        <WeatherApplication.Client.Components.ForecastGrid Data="@viewModel.Forecasts.Weather" />
+    }
+</EditForm>
+
+
+@code { 
+
+    string[] CityList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        CityList = await viewModel.GetCityList();
+        await base.OnInitializedAsync();
+    }
+
+    async Task OnValueChanged(string val)
+    {
+        Console.WriteLine($"{val} - hit");
+        await viewModel.GetForecast(val);
+        StateHasChanged();
+    }
+}
