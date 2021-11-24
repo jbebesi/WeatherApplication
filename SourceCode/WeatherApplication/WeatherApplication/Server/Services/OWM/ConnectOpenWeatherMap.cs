@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using WeatherApplication.Server.Dtos.OWM;
 using WeatherApplication.Server.Interfaces;
@@ -18,7 +19,6 @@ namespace WeatherApplication.Server.Services.OWM
 
         private readonly OWMSettings _settings;
         private readonly List<CityData> mCityList;
-        //List<CityData> IWeatherProvider.CityList => mCityList;
         private readonly ILogger<ConnectOpenWeatherMap> _logger;
 
         private readonly HttpClient _httpClient;
@@ -27,13 +27,7 @@ namespace WeatherApplication.Server.Services.OWM
         {
             _logger = logger;
             _httpClient = httpClient;
-            var section = configuration.GetSection($"{ OWMSettings.Settings}");
-            _settings = section.Get<OWMSettings>();
-
-
-            //string s = System.Text.Encoding.UTF8.GetString(Properties.Resources.city_list);
-            //mCityList = JsonConvert.DeserializeObject<List<CityData>>(s);
-            _httpClient.BaseAddress = new Uri(_settings.Url);
+            _settings = new OWMSettings();
         }
 
         public async Task<WeatherData> GetCityData(string city)
@@ -75,18 +69,15 @@ namespace WeatherApplication.Server.Services.OWM
             return new WeatherData();
         }
 
-        public async Task<WeatherForecastData> GetLocationForecast(LocationData location)
+
+        public async Task<WeatherForecastData> GetCityForecast(string city)
         {
             try
             {
-                string rString = _settings.Lat + location.Latitude + _settings.Lon + location.Longitude;
-                HttpResponseMessage resp = await _httpClient.GetAsync(_settings.Forecast + rString + _settings.Metric + _settings.APIKey).ConfigureAwait(false);
-                if (resp.Content != null)
-                {
-                    string responseString = await resp.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var query = $"{_settings.ForecastUrl}?{_settings.CityPref}{city}&units=metric&{_settings.APIKey}";
+                OWMForecast resp = await _httpClient.GetFromJsonAsync<OWMForecast>(query).ConfigureAwait(false);
+                return resp.ToWeatherForecastData();
 
-                    return JsonConvert.DeserializeObject<OWMWeatherForecastData>(responseString);
-                }
             }
             catch (Exception ex)
             {
@@ -94,16 +85,18 @@ namespace WeatherApplication.Server.Services.OWM
             }
             return new WeatherForecastData();
         }
-
-        public async Task<WeatherForecastData> GetCityForecast(string city)
+        public async Task<WeatherForecastData> GetLocationForecast(LocationData location)
         {
             try
             {
-                HttpResponseMessage resp = await _httpClient.GetAsync(_settings.Forecast + _settings.CityPref + city + _settings.Metric + _settings.APIKey).ConfigureAwait(false);
+                var query =  $"{_settings.OneCallAPI}?{_settings.Lat}{location.Latitude}{_settings.Lon}{location.Longitude}{_settings.APIKey}";
+
+                HttpResponseMessage resp = await _httpClient.GetAsync(query).ConfigureAwait(false);
                 if (resp.Content != null)
                 {
                     string responseString = await resp.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    return JsonConvert.DeserializeObject<OWMWeatherForecastData>(responseString);
+                    var data = JsonConvert.DeserializeObject<OWMWeatherData>(responseString);
+                    return new WeatherForecastData() { Weather = new WeatherData[] { (WeatherData)data } };
                 }
             }
             catch (Exception ex)

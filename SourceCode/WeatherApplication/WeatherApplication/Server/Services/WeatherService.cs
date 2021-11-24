@@ -19,16 +19,7 @@ namespace WeatherApplication.Server.Services
         }
         public async Task<WeatherForecastData> GetWeatherForecastsAsync(string city)
         {
-            return await Task.FromResult(new WeatherForecastData
-            {
-                CityName = "Budapest",
-                CountryName = "Hungary",
-                Weather = new WeatherData[] {
-                    new WeatherData(){   DateTime = DateTime.Now.AddHours(1), LocationName= "Budapest" , LooksLike = "Good" , Temperature = 31 , TemperatureFeelsLike = 25, WindDirection = 12 , WindSpeed =2 },
-                    new WeatherData(){   DateTime = DateTime.Now.AddHours(2), LocationName= "Budapest" , LooksLike = "Good" , Temperature = 32 , TemperatureFeelsLike = 25, WindDirection = 12 , WindSpeed =2 },
-                    new WeatherData(){   DateTime = DateTime.Now.AddHours(3), LocationName= "Budapest" , LooksLike = "Good" , Temperature = 33 , TemperatureFeelsLike = 25, WindDirection = 12 , WindSpeed =2 }
-                }
-            });
+            return  await _WeatherService.GetWeatherForecastsAsync(city);
         }
     }
 }

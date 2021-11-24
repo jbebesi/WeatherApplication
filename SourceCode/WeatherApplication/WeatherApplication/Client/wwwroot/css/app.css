@@ -184,6 +184,10 @@ app {
 
 
 .actual-temp{
-    font-size: larger;
+    font-size: 40px;
     color: red;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -28,7 +28,9 @@ namespace WeatherApplication.Server.Dtos.OWM
                 (short)data.wind.speed,
                 data.wind.deg,
                 data.name,
-                data.dt_txt);
+                data.dt_txt,
+                short.MinValue,
+                short.MaxValue);
         }
     }
 
@@ -43,73 +45,7 @@ namespace WeatherApplication.Server.Dtos.OWM
                 "\tLon=" + lon.ToString() + Environment.NewLine;
         }
     }
-
-    public struct Main
-    {
-        public double temp;
-        public double pressure;
-        public double humidity;
-        public double temp_min;
-        public double temp_max;
-
-        public override string ToString()
-        {
-            return "\ttemp=" + temp.ToString() + Environment.NewLine +
-                    "\tpressure=" + pressure.ToString() + Environment.NewLine +
-                    "\thumidity=" + humidity.ToString() + Environment.NewLine +
-                    "\tMin temp=" + temp_min.ToString() + Environment.NewLine +
-                    "\tMax temp=" + temp_max.ToString() + Environment.NewLine;
-        }
-    }
-
-    public struct Wind
-    {
-        public double speed;
-        public double deg;
-
-        public override string ToString()
-        {
-            string dString;
-            if (deg < 22.5 && deg >= 340.5)
-            {
-                dString = "N";
-            }
-            else if (deg >= 22.5 && deg < 67.5)
-            {
-                dString = "NE";
-            }
-            else if (deg >= 67.5 && deg < 112.5)
-            {
-                dString = "E";
-            }
-            else if (deg >= 112.5 && deg < 157.5)
-            {
-                dString = "SE";
-            }
-            else if (deg >= 157.5 && deg < 202.5)
-            {
-                dString = "S";
-            }
-            else if (deg >= 202.5 && deg < 247.5)
-            {
-                dString = "SW";
-            }
-            else if (deg >= 247.5 && deg < 292.5)
-            {
-                dString = "W";
-            }
-            else if (deg >= 292.5 && deg < 337.5)
-            {
-                dString = "NW";
-            }
-            else
-            {
-                dString = "Invalid deg!";
-            }
-
-            return speed.ToString() + dString;
-        }
-    }
+  
 
     public struct Weather
     {
@@ -137,16 +73,6 @@ namespace WeatherApplication.Server.Dtos.OWM
         }
     }
 
-    public struct Rain
-    {
-        //volume for 3 hours, mm
-        public int h;
-
-        public override string ToString()
-        {
-            return "\t3h=" + h.ToString() + Environment.NewLine;
-        }
-    }
 
     public struct OWMWeatherForecastData
     {

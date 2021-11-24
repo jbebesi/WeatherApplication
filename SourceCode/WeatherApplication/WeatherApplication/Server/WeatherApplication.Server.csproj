@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\OWM\" />
     <Folder Include="Services\OWM\" />
   </ItemGroup>
 
