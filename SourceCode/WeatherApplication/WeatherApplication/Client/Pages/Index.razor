@@ -1,9 +1,25 @@
 ﻿@page "/"
-
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+@inject IndexViewModel viewModel
 
 <div>
     Turn on location services to get the most accurate forecast for your location. Wetta will use your location in the background to automatically update weather data and provide forecast for this location. You can change this in your settings any time. You can also add locations manually.
 </div>
+@position
 
 <button>Ask me later</button>
-<button>Allow access to location</button>
+<button @onclick=LocationButtonClicked >Allow access to location</button>
+
+@code{
+    private string position = "No position";
+    private async Task LocationButtonClicked()
+    {
+        position = await JSRuntime.InvokeAsync<string>("getLocation");
+        if (position!= "Geolocation is not supported by this browser.")
+        {
+            viewModel.Location = position;
+            Navigation.NavigateTo("showweatherdata");
+        }
+    }
+}
