@@ -22,9 +22,7 @@ namespace WeatherApplication.Client.ViewModels
             set 
             { 
                 selected = value;
-                Console.WriteLine("Get Forecasts"); 
                 GetForecast(value).Wait(); 
-                Console.WriteLine("Second"); 
             }
         }
 
