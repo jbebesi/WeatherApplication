@@ -1,7 +1,8 @@
 @page "/showweatherdata"
 @using Microsoft.Extensions.Logging
 @inject ShowWeatherDataViewModel viewModel
-@inject ILogger<ShowWeatherData> _logger
+@inject IndexViewModel location
+@inject ILogger<ShowWeatherData> logger
 
 <EditForm Model="@viewModel">
     <InputSelect Value="@viewModel.SelectedCity" ValueExpression="@(()=>viewModel.SelectedCity)" ValueChanged="@((string value) => OnValueChanged(value ))">
@@ -23,13 +24,17 @@
 </EditForm>
 
 
-@code { 
+@code {
 
     string[] CityList;
 
     protected override async Task OnInitializedAsync()
     {
         CityList = await viewModel.GetCityList();
+        if(location.Location != null)
+        {
+            await viewModel.GetForecast(location.Location);
+        }
         await base.OnInitializedAsync();
     }
 
