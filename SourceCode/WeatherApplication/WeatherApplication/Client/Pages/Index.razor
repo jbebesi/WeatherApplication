@@ -16,8 +16,14 @@
     private async Task LocationButtonClicked()
     {
         position = await JSRuntime.InvokeAsync<string>("getLocation");
-        if (position!= "Geolocation is not supported by this browser.")
+        if (position== "Geolocation is not supported by this browser.")
         {
+            viewModel.Location = "Moscow";
+            Navigation.NavigateTo("showweatherdata");
+        }
+        else
+        {
+            Console.WriteLine($"Current location:{position}");
             viewModel.Location = position;
             Navigation.NavigateTo("showweatherdata");
         }
