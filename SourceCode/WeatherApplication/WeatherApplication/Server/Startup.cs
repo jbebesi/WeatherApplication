@@ -7,9 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using System.Net.Http;
-using WeatherApplication.Server.Interfaces;
-using WeatherApplication.Server.Services;
-using WeatherApplication.Server.Services.OWM;
+using WeatherApplication.Shared.Interfaces;
+using WeatherApplication.Shared.Services;
+using WeatherApplication.Shared.Services.OWM;
 
 namespace WeatherApplication.Server
 {
@@ -31,6 +31,7 @@ namespace WeatherApplication.Server
             services.AddScoped<IWeatherService, WeatherService>();
             services.AddScoped<IWeatherDataStore, WeatherDataStore>();
             services.AddScoped<IWeatherProvider, ConnectOpenWeatherMap>();
+            services.AddScoped<ICityListProvider, CityListProvider>();
             services.AddScoped<HttpClient>();
             services.AddRazorPages();
         }

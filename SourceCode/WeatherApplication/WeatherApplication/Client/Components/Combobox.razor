@@ -1,18 +1,35 @@
-﻿<div class="dropdown">
+﻿@inject IJSRuntime jsRuntime
+<div class="dropdown">
     <button onclick="myFunction()" class="dropbtn">Dropdown</button>
     <div id="myDropdown" class="dropdown-content">
-        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-        <a href="#about">About</a>
-        <a href="#base">Base</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
-        <a href="#custom">Custom</a>
-        <a href="#support">Support</a>
-        <a href="#tools">Tools</a>
+         <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+        @if (OptionsList != null)
+        {
+            @foreach (var option in OptionsList)
+            {
+                <a href="#@option">@option</a>
+            }
+        }
     </div>
 </div>
 
 
 @code {
-
+    [Parameter]
+    public string[] OptionsList { get; set; }
+    //private string[] filteredOptions;
+    [Parameter]
+    public int MaxShown { get; set; } = 30;
+    private string filter = "";
+    private void FilterFunction()
+    {
+        
+    }
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        jsRuntime.InvokeVoidAsync("myFunction");
+        jsRuntime.InvokeVoidAsync("filterFunction");
+        jsRuntime.InvokeVoidAsync("setList",OptionsList);
+    }
 }
