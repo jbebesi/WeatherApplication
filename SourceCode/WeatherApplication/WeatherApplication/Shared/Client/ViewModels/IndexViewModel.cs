@@ -1,4 +1,4 @@
-﻿namespace WeatherApplication.Client.ViewModels
+﻿namespace WeatherApplication.Shared.Client.ViewModels
 {
     public class IndexViewModel
     {

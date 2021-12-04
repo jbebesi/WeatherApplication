@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Weather;
 
-namespace WeatherApplication.Server.Interfaces
+namespace WeatherApplication.Shared.Interfaces
 {
     public interface IWeatherDataStore
     {

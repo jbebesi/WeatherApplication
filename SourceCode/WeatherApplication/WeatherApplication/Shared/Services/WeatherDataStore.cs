@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WeatherApplication.Server.Interfaces;
 using WeatherApplication.Shared.Dtos.Weather;
+using WeatherApplication.Shared.Interfaces;
 
-namespace WeatherApplication.Server.Services
+namespace WeatherApplication.Shared.Services
 {
     public class WeatherDataStore : IWeatherDataStore
     {
@@ -25,7 +25,7 @@ namespace WeatherApplication.Server.Services
 
         public async Task<WeatherForecastData> GetWeatherForecastsAsync(string city)
         {
-            if(_storedWeatherData.ContainsKey(city))
+            if (_storedWeatherData.ContainsKey(city))
             {
                 var result = _storedWeatherData[city];
                 if (result.Item2.Date.AddHours(4) < DateTime.Now)
@@ -35,7 +35,7 @@ namespace WeatherApplication.Server.Services
                     _storedWeatherData.Remove(city);
                 }
             }
-            var updated= await _weatherProvider.GetCityForecast(city);
+            var updated = await _weatherProvider.GetCityForecast(city);
             _storedWeatherData.Add(city, Tuple.Create(updated, DateTime.Now));
             return updated;
         }

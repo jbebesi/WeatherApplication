@@ -7,12 +7,12 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using WeatherApplication.Server.Dtos.OWM;
-using WeatherApplication.Server.Interfaces;
 using WeatherApplication.Shared.Dtos.Misc;
+using WeatherApplication.Shared.Dtos.OWM;
 using WeatherApplication.Shared.Dtos.Weather;
+using WeatherApplication.Shared.Interfaces;
 
-namespace WeatherApplication.Server.Services.OWM
+namespace WeatherApplication.Shared.Services.OWM
 {
     public class ConnectOpenWeatherMap : IWeatherProvider
     {
@@ -89,7 +89,7 @@ namespace WeatherApplication.Server.Services.OWM
         {
             try
             {
-                var query =  $"{_settings.OneCallAPI}?{_settings.Lat}{location.Latitude}{_settings.Lon}{location.Longitude}{_settings.APIKey}";
+                var query = $"{_settings.OneCallAPI}?{_settings.Lat}{location.Latitude}{_settings.Lon}{location.Longitude}{_settings.APIKey}";
 
                 HttpResponseMessage resp = await _httpClient.GetAsync(query).ConfigureAwait(false);
                 if (resp.Content != null)

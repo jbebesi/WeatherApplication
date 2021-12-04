@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using WeatherApplication.Client.Helpers;
+using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Dtos.Weather;
 
-namespace WeatherApplication.Client.ViewModels
+namespace WeatherApplication.Shared.Client.ViewModels
 {
     public class ShowWeatherDataViewModel
     {
@@ -18,11 +17,13 @@ namespace WeatherApplication.Client.ViewModels
 
 
         private string selected;
-        public string SelectedCity { get => selected; 
-            set 
-            { 
+        public string SelectedCity
+        {
+            get => selected;
+            set
+            {
                 selected = value;
-                GetForecast(value).Wait(); 
+                GetForecast(value).Wait();
             }
         }
 
@@ -33,8 +34,16 @@ namespace WeatherApplication.Client.ViewModels
 
         public async Task<string[]> GetCityList()
         {
-            if(CityList == null)
-                CityList=LoadCityList.GetCityList().Select(t => t.Text).ToArray();
+            if (CityList == null)
+                try
+                {
+                    var list = await _httpClient.GetFromJsonAsync<CityData[]>("api/citylist");
+                    CityList = list.Select(t => t.Text).ToArray();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             return CityList;
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WeatherApplication.Shared.Dtos.Weather;
 
-namespace WeatherApplication.Server.Dtos.OWM
+namespace WeatherApplication.Shared.Dtos.OWM
 {
     public struct OWMWeatherData
     {
@@ -45,7 +45,7 @@ namespace WeatherApplication.Server.Dtos.OWM
                 "\tLon=" + lon.ToString() + Environment.NewLine;
         }
     }
-  
+
 
     public struct Weather
     {
@@ -86,7 +86,7 @@ namespace WeatherApplication.Server.Dtos.OWM
         {
             return new WeatherForecastData
             {
-                Weather = data.list.ToList().ConvertAll<WeatherData>(t => (WeatherData)t).ToArray(),
+                Weather = data.list.ToList().ConvertAll(t => (WeatherData)t).ToArray(),
                 CityName = data.city.Name,
                 CountryName = data.city.Country
             };

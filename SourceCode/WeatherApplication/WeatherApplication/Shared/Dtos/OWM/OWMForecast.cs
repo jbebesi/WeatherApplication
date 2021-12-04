@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Weather;
 
-namespace WeatherApplication.Server.Dtos.OWM
+namespace WeatherApplication.Shared.Dtos.OWM
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class Main
@@ -98,7 +98,7 @@ namespace WeatherApplication.Server.Dtos.OWM
             {
                 CityName = city.name,
                 CountryName = city.country,
-                Weather = list.Select(t=>t.ToWeatherData()).ToArray()
+                Weather = list.Select(t => t.ToWeatherData()).ToArray()
             };
         }
     }
