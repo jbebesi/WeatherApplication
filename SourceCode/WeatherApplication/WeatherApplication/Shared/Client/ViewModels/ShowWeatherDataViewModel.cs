@@ -32,6 +32,25 @@ namespace WeatherApplication.Shared.Client.ViewModels
             _httpClient = client;
         }
 
+        public async Task<string[]> GetCityList(string filter)
+        {
+            if(CityList == null)
+            {
+                CityList = new string[0];   
+            }
+            try
+            {
+                var list = await _httpClient.GetFromJsonAsync<CityData[]>($"api/citylist/{filter}");
+                CityList = list.Select(t => t.Text).ToArray();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return CityList;
+
+        }
+
         public async Task<string[]> GetCityList()
         {
             if (CityList == null)
