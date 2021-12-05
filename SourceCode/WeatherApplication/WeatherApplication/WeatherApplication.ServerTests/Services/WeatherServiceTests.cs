@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WeatherApplication.Server.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Moq;
 using Microsoft.Extensions.Logging;
-using WeatherApplication.Server.Interfaces;
 using System.Threading.Tasks;
+using WeatherApplication.Shared.Interfaces;
+using WeatherApplication.Shared.Services;
 
 namespace WeatherApplication.ServerTests.Services
 {

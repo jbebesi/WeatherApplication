@@ -7,8 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using WeatherApplication.Client.HttpClients;
-using WeatherApplication.Client.ViewModels;
+using WeatherApplication.Shared.Client.ViewModels;
 
 namespace WeatherApplication.Client
 {
@@ -20,8 +19,8 @@ namespace WeatherApplication.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddScoped(sp => new SubscriptionHttpClient { BaseAddress = new Uri("http://subscriptionservice:81") });
             builder.Services.AddScoped<ShowWeatherDataViewModel>();
+            builder.Services.AddScoped<IndexViewModel>();
             builder.Services.AddLogging();
 
             await builder.Build().RunAsync();

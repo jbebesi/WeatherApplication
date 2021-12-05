@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WeatherApplication.Server.Dtos.OWM
+namespace WeatherApplication.Shared.Dtos.OWM
 {
 
     public class Current

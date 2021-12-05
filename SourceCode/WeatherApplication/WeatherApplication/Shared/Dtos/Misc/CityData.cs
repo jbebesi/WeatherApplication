@@ -4,11 +4,11 @@ namespace WeatherApplication.Shared.Dtos.Misc
 {
     public struct CityData
     {
-        public string Text => name + ", " + country;
-        public int id;
-        public string name;
-        public string country;
-        public Coordinate coord;
+        public string Text => Name + ", " + Country;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Country { get; set; }
+        public Coordinate Coord { get; set; }
 
         public override string ToString()
         {

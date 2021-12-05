@@ -1,18 +1,52 @@
-﻿<div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-    <div id="myDropdown" class="dropdown-content">
-        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-        <a href="#about">About</a>
-        <a href="#base">Base</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
-        <a href="#custom">Custom</a>
-        <a href="#support">Support</a>
-        <a href="#tools">Tools</a>
-    </div>
-</div>
+﻿<InputText ValueChanged="FilterFunction" ValueExpression="() => filter" Value=@filter/>
+<InputSelect ValueChanged="ValueSelected" ValueExpression="() => filter">
+        @if (filtered != null)
+    {
+        @for (int i = 0; i < filtered.Length && i < MaxShown; i++)
+        {
+            <option value="@filtered[i]">@filtered[i]</option>
+        }
+    }
+    </InputSelect>
+
+
 
 
 @code {
+    [Parameter]
+    public string[] OptionsList { get; set; }
+    private string[] filtered;
+    [Parameter]
+    public int MaxShown { get; set; } = 30;
+    [Parameter]
+    public int MinShown { get; set; } = 5;
+    [Parameter]
+    public Action<string>? UpdateOptionsList { get; set; }
+    [Parameter]
+    public Action<string>? ValueSelected{ get; set; }
 
+    private string filter = "";
+    private void FilterFunction(string val)
+    {
+        Console.WriteLine("Filtered");
+        filter = val;
+        if (OptionsList == null)
+            return;
+        var temp = OptionsList.Where(t => t.Contains(val)).ToArray();
+        if (temp == filtered)
+            return;
+        filtered=temp;
+        StateHasChanged();
+        if(filtered.Length < MinShown && UpdateOptionsList != null)
+        {
+            UpdateOptionsList?.Invoke(filter);
+            StateHasChanged();
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        FilterFunction("");
+        base.OnParametersSet();
+    }
 }

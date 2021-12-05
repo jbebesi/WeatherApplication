@@ -5,11 +5,8 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+		<SignAssembly>False</SignAssembly>
 	</PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="Resources\city.list.json" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Components\Combobox.razor.css" />
@@ -29,10 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\WeatherApplication.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\city.list.json" />
   </ItemGroup>
 
   <ItemGroup>

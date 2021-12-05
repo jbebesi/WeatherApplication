@@ -1,4 +1,4 @@
-﻿namespace WeatherApplication.Server.Dtos.OWM
+﻿namespace WeatherApplication.Shared.Dtos.OWM
 {
     public class OWMSettings
     {

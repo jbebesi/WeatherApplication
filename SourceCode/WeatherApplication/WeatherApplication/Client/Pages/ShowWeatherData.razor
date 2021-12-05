@@ -1,18 +1,11 @@
 @page "/showweatherdata"
 @using Microsoft.Extensions.Logging
 @inject ShowWeatherDataViewModel viewModel
-@inject ILogger<ShowWeatherData> _logger
+@inject IndexViewModel location
+@inject ILogger<ShowWeatherData> logger
 
 <EditForm Model="@viewModel">
-    <InputSelect Value="@viewModel.SelectedCity" ValueExpression="@(()=>viewModel.SelectedCity)" ValueChanged="@((string value) => OnValueChanged(value ))">
-        @if (CityList != null)
-        {
-            @foreach (var city in CityList)
-            {
-                <option value="@city">@city</option>
-            }
-        }
-    </InputSelect>
+    <WeatherApplication.Client.Components.Combobox OptionsList=CityList ValueSelected="LoadForecast" UpdateOptionsList="UpdateCityList" />
     @if (viewModel.Forecasts != null)
     {
         <h1 class="center">@viewModel.Forecasts.CityName ,@viewModel.Forecasts.CountryName</h1>
@@ -23,20 +16,41 @@
 </EditForm>
 
 
-@code { 
+@code {
 
     string[] CityList;
+    static Action<string> LoadForecast;
 
     protected override async Task OnInitializedAsync()
     {
         CityList = await viewModel.GetCityList();
+        if(location.Location != null)
+        {
+
+            await viewModel.GetForecast(location.Location);
+        }
+        LoadForecast = async t => { await viewModel.GetForecast(t); StateHasChanged(); };
+        UpdateCityList = filter => { CityList = viewModel.GetCityList(filter).Result; StateHasChanged(); };
         await base.OnInitializedAsync();
     }
+
+    [JSInvokable]
+    public static void SetCity(string city)
+    {
+        LoadForecast?.Invoke(city);
+    }
+
+    Func<Task<string[]>> LoadMoreOptions(string filter)
+    {
+        return async () => await viewModel.GetCityList(filter);
+    }
+
+    Action<string> UpdateCityList;
 
     async Task OnValueChanged(string val)
     {
         Console.WriteLine($"{val} - hit");
         await viewModel.GetForecast(val);
-        StateHasChanged();
+    //    StateHasChanged();
     }
 }

@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using WeatherApplication.Shared.Dtos.Misc;
 
-namespace WeatherApplication.Client.Helpers
+namespace WeatherApplication.Shared.Helpers
 {
     public class LoadCityList
     {
-        private static List<CityData>? _cityList;
+        private static List<CityData> _cityList;
         public static List<CityData> GetCityList()
         {
             try
