@@ -5,99 +5,97 @@ namespace WeatherApplication.Shared.Dtos.OWM
 
     public class Current
     {
-        public int dt { get; set; }
-        public int sunrise { get; set; }
-        public int sunset { get; set; }
-        public double temp { get; set; }
-        public double feels_like { get; set; }
-        public int pressure { get; set; }
-        public int humidity { get; set; }
-        public double dew_point { get; set; }
-        public int uvi { get; set; }
-        public int clouds { get; set; }
-        public int visibility { get; set; }
-        public double wind_speed { get; set; }
-        public int wind_deg { get; set; }
-        public double wind_gust { get; set; }
-        public List<Weather> weather { get; set; }
+        public int Dt { get; set; }
+        public int Sunrise { get; set; }
+        public int Sunset { get; set; }
+        public double Temp { get; set; }
+        public double Feels_like { get; set; }
+        public int Pressure { get; set; }
+        public int Humidity { get; set; }
+        public double Dew_point { get; set; }
+        public int Uvi { get; set; }
+        public int Clouds { get; set; }
+        public int Visibility { get; set; }
+        public double Wind_speed { get; set; }
+        public int Wind_deg { get; set; }
+        public double Wind_gust { get; set; }
+        public List<Weather> Weather { get; set; }
     }
 
     public class Minutely
     {
-        public int dt { get; set; }
-        public int precipitation { get; set; }
+        public int Dt { get; set; }
+        public int Precipitation { get; set; }
     }
 
     public class Hourly
     {
-        public int dt { get; set; }
-        public double temp { get; set; }
-        public double feels_like { get; set; }
-        public int pressure { get; set; }
-        public int humidity { get; set; }
-        public double dew_point { get; set; }
-        public double uvi { get; set; }
-        public int clouds { get; set; }
-        public int visibility { get; set; }
-        public double wind_speed { get; set; }
-        public int wind_deg { get; set; }
-        public double wind_gust { get; set; }
-        public List<Weather> weather { get; set; }
-        public int pop { get; set; }
+        public int Dt { get; set; }
+        public double Temp { get; set; }
+        public double Feels_like { get; set; }
+        public int Pressure { get; set; }
+        public int Humidity { get; set; }
+        public double Dew_point { get; set; }
+        public double Uvi { get; set; }
+        public int Clouds { get; set; }
+        public int Visibility { get; set; }
+        public double Wind_speed { get; set; }
+        public int Wind_deg { get; set; }
+        public double Wind_gust { get; set; }
+        public List<Weather> Weather { get; set; }
+        public int Pop { get; set; }
     }
 
     public class Temp
     {
-        public double day { get; set; }
-        public double min { get; set; }
-        public double max { get; set; }
-        public double night { get; set; }
-        public double eve { get; set; }
-        public double morn { get; set; }
+        public double Day { get; set; }
+        public double Min { get; set; }
+        public double Max { get; set; }
+        public double Night { get; set; }
+        public double Eve { get; set; }
+        public double Morn { get; set; }
     }
 
     public class FeelsLike
     {
-        public double day { get; set; }
-        public double night { get; set; }
-        public double eve { get; set; }
-        public double morn { get; set; }
+        public double Day { get; set; }
+        public double Night { get; set; }
+        public double Eve { get; set; }
+        public double Morn { get; set; }
     }
 
     public class Daily
     {
-        public int dt { get; set; }
-        public int sunrise { get; set; }
-        public int sunset { get; set; }
-        public int moonrise { get; set; }
-        public int moonset { get; set; }
-        public double moon_phase { get; set; }
-        public Temp temp { get; set; }
-        public FeelsLike feels_like { get; set; }
-        public int pressure { get; set; }
-        public int humidity { get; set; }
-        public double dew_point { get; set; }
-        public double wind_speed { get; set; }
-        public int wind_deg { get; set; }
-        public double wind_gust { get; set; }
-        public List<Weather> weather { get; set; }
-        public int clouds { get; set; }
-        public double pop { get; set; }
-        public double uvi { get; set; }
-        public double? rain { get; set; }
+        public int Dt { get; set; }
+        public int Sunrise { get; set; }
+        public int Sunset { get; set; }
+        public int Moonrise { get; set; }
+        public int Moonset { get; set; }
+        public double Moon_phase { get; set; }
+        public Temp Temp { get; set; }
+        public FeelsLike Feels_like { get; set; }
+        public int Pressure { get; set; }
+        public int Humidity { get; set; }
+        public double Dew_point { get; set; }
+        public double Wind_speed { get; set; }
+        public int Wind_deg { get; set; }
+        public double Wind_gust { get; set; }
+        public List<Weather> Weather { get; set; }
+        public int Clouds { get; set; }
+        public double Pop { get; set; }
+        public double Uvi { get; set; }
+        public double? Rain { get; set; }
     }
 
     public class Root
     {
-        public double lat { get; set; }
-        public double lon { get; set; }
-        public string timezone { get; set; }
-        public int timezone_offset { get; set; }
-        public Current current { get; set; }
-        public List<Minutely> minutely { get; set; }
-        public List<Hourly> hourly { get; set; }
-        public List<Daily> daily { get; set; }
+        public double Lat { get; set; }
+        public double Lon { get; set; }
+        public string Timezone { get; set; }
+        public int Timezone_offset { get; set; }
+        public Current Current { get; set; }
+        public List<Minutely> Minutely { get; set; }
+        public List<Hourly> Hourly { get; set; }
+        public List<Daily> Daily { get; set; }
     }
-
-
 }
