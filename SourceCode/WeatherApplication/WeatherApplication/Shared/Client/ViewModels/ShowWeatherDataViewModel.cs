@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -12,7 +13,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
     {
 
         public WeatherForecastData Forecasts { get; private set; }
-        private string[] CityList;
+        private List<string> CityList;
         private readonly HttpClient _httpClient;
 
 
@@ -32,16 +33,16 @@ namespace WeatherApplication.Shared.Client.ViewModels
             _httpClient = client;
         }
 
-        public async Task<string[]> GetCityList(string filter)
+        public async Task<List<string>> UpdateCityList(string filter)
         {
             if(CityList == null)
             {
-                CityList = new string[0];   
+                CityList = new List<string>();   
             }
             try
             {
                 var list = await _httpClient.GetFromJsonAsync<CityData[]>($"api/citylist/{filter}");
-                CityList = list.Select(t => t.Text).ToArray();
+                CityList.AddRange(list.Select(t => t.Text));
             }
             catch (Exception ex)
             {
@@ -51,13 +52,13 @@ namespace WeatherApplication.Shared.Client.ViewModels
 
         }
 
-        public async Task<string[]> GetCityList()
+        public async Task<List<string>> GetCityList()
         {
             if (CityList == null)
                 try
                 {
                     var list = await _httpClient.GetFromJsonAsync<CityData[]>("api/citylist");
-                    CityList = list.Select(t => t.Text).ToArray();
+                    CityList = list.Select(t => t.Text).ToList();
                 }
                 catch (Exception ex)
                 {

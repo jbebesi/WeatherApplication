@@ -18,7 +18,7 @@
 
 @code {
 
-    string[] CityList;
+    IEnumerable<string> CityList;
     static Action<string> LoadForecast;
 
     protected override async Task OnInitializedAsync()
@@ -30,7 +30,7 @@
             await viewModel.GetForecast(location.Location);
         }
         LoadForecast = async t => { await viewModel.GetForecast(t); StateHasChanged(); };
-        UpdateCityList = filter => { CityList = viewModel.GetCityList(filter).Result; StateHasChanged(); };
+        UpdateCityList = filter => { CityList = viewModel.UpdateCityList(filter).Result; StateHasChanged(); };
         await base.OnInitializedAsync();
     }
 
@@ -42,7 +42,7 @@
 
     Func<Task<string[]>> LoadMoreOptions(string filter)
     {
-        return async () => await viewModel.GetCityList(filter);
+        return async () => (await viewModel.UpdateCityList(filter)).ToArray();
     }
 
     Action<string> UpdateCityList;

@@ -1,6 +1,6 @@
 // Caution! Be sure you understand the caveats before publishing an application with
 // offline support. See https://aka.ms/blazor-offline-considerations
-const CACHE_VERSION = '2021.05.22.001'  // Increment each time before deployment.
+const CACHE_VERSION = '2021.12.08.001'  // Increment each time before deployment.
 const cacheNamePrefix = 'offline-cache-';
 const cacheName = `${cacheNamePrefix}${self.assetsManifest.version}`;
 Console.log(cacheName);
