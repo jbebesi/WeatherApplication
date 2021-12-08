@@ -14,7 +14,7 @@
 
 @code {
     [Parameter]
-    public string[] OptionsList { get; set; }
+    public IEnumerable<string> OptionsList { get; set; }
     private string[] filtered;
     [Parameter]
     public int MaxShown { get; set; } = 30;
@@ -36,12 +36,11 @@
         if (temp == filtered)
             return;
         filtered=temp;
-        StateHasChanged();
         if(filtered.Length < MinShown && UpdateOptionsList != null)
         {
             UpdateOptionsList?.Invoke(filter);
-            StateHasChanged();
         }
+        StateHasChanged();
     }
 
     protected override void OnParametersSet()
