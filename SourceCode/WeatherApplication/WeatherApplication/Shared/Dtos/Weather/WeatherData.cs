@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace WeatherApplication.Shared.Dtos.Weather
 {
@@ -23,7 +22,7 @@ namespace WeatherApplication.Shared.Dtos.Weather
         public string LocationName { get; set; }
         public DateTime DateTime { get; set; }
 
-        public WeatherData(short nTemperature, short nTemperatureFeelsLike, string nLooksLike, short nWindSpeed, double nWindDirection, string nLocationName, DateTime nDateTime, short nTempMax,short nTempMin)
+        public WeatherData(short nTemperature, short nTemperatureFeelsLike, string nLooksLike, short nWindSpeed, double nWindDirection, string nLocationName, DateTime nDateTime, short nTempMax, short nTempMin)
         {
             Temperature = nTemperature;
             TemperatureFeelsLike = nTemperatureFeelsLike;

@@ -22,11 +22,11 @@ namespace WeatherApplication.Shared.Dtos.OWM
         public static explicit operator WeatherData(OWMWeatherData data)
         {
             return new WeatherData(
-                (short)data.main.temp,
-                (short)data.main.temp_max,
+                (short)data.main.Temp,
+                (short)data.main.Temp_max,
                 data.name,
-                (short)data.wind.speed,
-                data.wind.deg,
+                (short)data.wind.Speed,
+                data.wind.Deg,
                 data.name,
                 data.dt_txt,
                 short.MinValue,

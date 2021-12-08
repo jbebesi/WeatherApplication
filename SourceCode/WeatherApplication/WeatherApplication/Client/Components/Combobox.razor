@@ -14,8 +14,8 @@
 
 @code {
     [Parameter]
-    public IEnumerable<string> OptionsList { get; set; }
-    private string[] filtered;
+    public IEnumerable<string> OptionsList { get; set; } = new List<string>();
+    private string[] filtered = new string[0];
     [Parameter]
     public int MaxShown { get; set; } = 30;
     [Parameter]

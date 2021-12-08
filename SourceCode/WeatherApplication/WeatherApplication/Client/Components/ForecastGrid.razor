@@ -12,14 +12,18 @@
         </tr>
     </thead>
     <tbody>
-        @for (int i = 0; i < 4; i++)
+        @if (Data != null)
         {
-            <tr>
-                @for (int j = 0; j < 7; j++)
-                {
-                    <td width="14%">@Data[j][(WeatherData.DataType)i]</td>
-                }
-            </tr>
+            @for (int i = 0; i < 4 && i < Data.Length ; i++)
+            {
+                <tr>
+                    @for (int j = 0; j < 7; j++)
+                    {
+                        <td width="14%">@Data[j][(WeatherData.DataType)i]</td>
+                    }
+                </tr>
+            }
+
         }
     </tbody>
 
@@ -27,5 +31,5 @@
 
 @code {
     [Parameter]
-    public WeatherData[] Data { get; set; }
+    public WeatherData[]? Data { get; set; }
 }

@@ -1,13 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using WeatherApplication.Shared;
 using WeatherApplication.Shared.Dtos.Misc;
 
 namespace WeatherApplication.Server.Controllers
@@ -35,8 +31,8 @@ namespace WeatherApplication.Server.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message,ex);
-                return new Subscription() { FirstName= $"Message:{ex.Message}" };
+                _logger.LogError(ex.Message, ex);
+                return new Subscription() { FirstName = $"Message:{ex.Message}" };
             }
         }
     }

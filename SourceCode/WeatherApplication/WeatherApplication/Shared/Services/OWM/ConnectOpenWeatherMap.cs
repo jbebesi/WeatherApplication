@@ -18,12 +18,11 @@ namespace WeatherApplication.Shared.Services.OWM
     {
 
         private readonly OWMSettings _settings;
-        private readonly List<CityData> mCityList;
         private readonly ILogger<ConnectOpenWeatherMap> _logger;
 
         private readonly HttpClient _httpClient;
 
-        public ConnectOpenWeatherMap(HttpClient httpClient, IConfiguration configuration, ILogger<ConnectOpenWeatherMap> logger)
+        public ConnectOpenWeatherMap(HttpClient httpClient, ILogger<ConnectOpenWeatherMap> logger)
         {
             _logger = logger;
             _httpClient = httpClient;
