@@ -35,9 +35,9 @@ namespace WeatherApplication.Shared.Client.ViewModels
 
         public async Task<List<string>> UpdateCityList(string filter)
         {
-            if(CityList == null)
+            if (CityList == null)
             {
-                CityList = new List<string>();   
+                CityList = new List<string>();
             }
             try
             {

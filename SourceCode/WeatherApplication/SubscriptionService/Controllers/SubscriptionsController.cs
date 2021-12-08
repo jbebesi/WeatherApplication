@@ -2,10 +2,6 @@
 using Microsoft.Extensions.Logging;
 using SubscriptionService.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WeatherApplication.Shared;
 using WeatherApplication.Shared.Dtos.Misc;
 
 namespace SubscriptionService.Controllers
@@ -27,7 +23,15 @@ namespace SubscriptionService.Controllers
         [HttpGet]
         public Subscription Get()
         {
-            return _iSubscriptionInterface.GetSubscription("");
+            try
+            {
+                return _iSubscriptionInterface.GetSubscription("");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogWarning(ex.Message,ex);
+                return null;
+            }
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using WeatherApplication.Shared;
 using WeatherApplication.Shared.Dtos.Weather;
 using WeatherApplication.Shared.Interfaces;
 
@@ -17,10 +13,10 @@ namespace WeatherApplication.Server.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IWeatherService _weatherService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IWeatherService weatherProvider) 
-        { 
-            _logger = logger;  
-            _weatherService = weatherProvider; 
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IWeatherService weatherProvider)
+        {
+            _logger = logger;
+            _weatherService = weatherProvider;
         }
 
         [HttpGet("{city}")]

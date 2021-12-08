@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Weather;
 
 namespace WeatherApplication.Shared.Dtos.OWM
@@ -9,28 +8,28 @@ namespace WeatherApplication.Shared.Dtos.OWM
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class Main
     {
-        public double temp { get; set; }
-        public double feels_like { get; set; }
-        public double temp_min { get; set; }
-        public double temp_max { get; set; }
-        public int pressure { get; set; }
-        public int sea_level { get; set; }
-        public int grnd_level { get; set; }
-        public int humidity { get; set; }
-        public double temp_kf { get; set; }
+        public double Temp { get; set; }
+        public double Feels_like { get; set; }
+        public double Temp_min { get; set; }
+        public double Temp_max { get; set; }
+        public int Pressure { get; set; }
+        public int Sea_level { get; set; }
+        public int Grnd_level { get; set; }
+        public int Humidity { get; set; }
+        public double Temp_kf { get; set; }
     }
 
 
     public class Wind
     {
-        public double speed { get; set; }
-        public int deg { get; set; }
-        public double gust { get; set; }
+        public double Speed { get; set; }
+        public int Deg { get; set; }
+        public double Gust { get; set; }
     }
 
     public class Sys
     {
-        public string pod { get; set; }
+        public string Pod { get; set; }
     }
 
     public class Rain
@@ -40,68 +39,71 @@ namespace WeatherApplication.Shared.Dtos.OWM
 
     public class OWMWeather
     {
-        public int dt { get; set; }
-        public Main main { get; set; }
-        public List<Weather> weather { get; set; }
-        public Clouds clouds { get; set; }
-        public Wind wind { get; set; }
-        public int visibility { get; set; }
-        public double pop { get; set; }
-        public Sys sys { get; set; }
-        public string dt_txt { get; set; }
-        public Rain rain { get; set; }
+        public int Dt { get; set; }
+        public Main Main { get; set; }
+        public List<Weather> Weather { get; set; }
+        public Clouds Clouds { get; set; }
+        public Wind Wind { get; set; }
+        public int Visibility { get; set; }
+        public double Pop { get; set; }
+        public Sys Sys { get; set; }
+        public string Dt_txt { get; set; }
+        public Rain Rain { get; set; }
 
         public WeatherData ToWeatherData()
         {
             return new WeatherData()
             {
-                DateTime = new DateTime(dt),
-                TemperatureFeelsLike = (short)main.feels_like,
-                TemperatureMin = (short)main.temp_min,
-                TemperatureMax = (short)main.temp_max,
-                Temperature = (short)main.temp,
-                WindDirection = wind.deg,
-                WindSpeed = (short)wind.speed,
+                DateTime = new DateTime(Dt),
+                TemperatureFeelsLike = (short)Main.Feels_like,
+                TemperatureMin = (short)Main.Temp_min,
+                TemperatureMax = (short)Main.Temp_max,
+                Temperature = (short)Main.Temp,
+                WindDirection = Wind.Deg,
+                WindSpeed = (short)Wind.Speed,
             };
         }
     }
 
     public class Coord
     {
-        public double lat { get; set; }
-        public double lon { get; set; }
+        public double Lat { get; set; }
+        public double Lon { get; set; }
     }
 
     public class City
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public Coord coord { get; set; }
-        public string country { get; set; }
-        public int population { get; set; }
-        public int timezone { get; set; }
-        public int sunrise { get; set; }
-        public int sunset { get; set; }
+        public City(string name)
+        {
+            Name = name;
+        }
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public Coord Coord { get; set; }
+        public string Country { get; set; }
+        public int Population { get; set; }
+        public int Timezone { get; set; }
+        public int Sunrise { get; set; }
+        public int Sunset { get; set; }
     }
 
     public class OWMForecast
     {
-        public string cod { get; set; }
-        public int message { get; set; }
-        public int cnt { get; set; }
-        public List<OWMWeather> list { get; set; }
-        public City city { get; set; }
+        public string Cod { get; set; }
+        public int Message { get; set; }
+        public int Cnt { get; set; }
+        public List<OWMWeather> List { get; set; }
+        public City City { get; set; }
 
         public WeatherForecastData ToWeatherForecastData()
         {
             return new WeatherForecastData()
             {
-                CityName = city.name,
-                CountryName = city.country,
-                Weather = list.Select(t => t.ToWeatherData()).ToArray()
+                CityName = City.Name,
+                CountryName = City.Country,
+                Weather = List.Select(t => t.ToWeatherData()).ToArray()
             };
         }
     }
-
-
 }

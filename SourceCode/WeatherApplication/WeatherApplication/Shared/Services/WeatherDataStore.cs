@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Weather;
 using WeatherApplication.Shared.Interfaces;
@@ -14,7 +13,7 @@ namespace WeatherApplication.Shared.Services
         private readonly ILogger<WeatherDataStore> _logger;
         private readonly IWeatherProvider _weatherProvider;
 
-        private Dictionary<string, Tuple<WeatherForecastData, DateTime>> _storedWeatherData;
+        private readonly Dictionary<string, Tuple<WeatherForecastData, DateTime>> _storedWeatherData;
 
         public WeatherDataStore(ILogger<WeatherDataStore> logger, IWeatherProvider weatherProvider)
         {

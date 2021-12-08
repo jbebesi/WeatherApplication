@@ -1,9 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 using WeatherApplication.Shared.Interfaces;
 using WeatherApplication.Shared.Services;

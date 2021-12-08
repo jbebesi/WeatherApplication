@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using WeatherApplication.Shared.Dtos.Misc;
 using System.Linq;
-using WeatherApplication.Shared.Interfaces;
+using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Helpers;
+using WeatherApplication.Shared.Interfaces;
 
 namespace WeatherApplication.Shared.Services
 {

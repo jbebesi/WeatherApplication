@@ -18,20 +18,16 @@
 
 
 @code {
-    private Subscription subscriptions;
+    private Subscription? subscriptions;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            Console.WriteLine("Subscription1");
-            //var client = new HttpClient { BaseAddress = new Uri("http://subscriptionservice:80") };
             subscriptions = await Http.GetFromJsonAsync<Subscription>("Subscriptions");
-            //subscriptions = await Http.GetSubscription("dummy");
         }
         catch(Exception ex)
         {
-            Console.WriteLine(ex.Message);
             _logger.LogError(ex.Message, ex);
         }
     }
