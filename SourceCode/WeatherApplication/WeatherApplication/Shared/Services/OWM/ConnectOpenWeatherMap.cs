@@ -1,9 +1,6 @@
-﻿//using OpenWeatherMap.Standard;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -21,7 +18,7 @@ namespace WeatherApplication.Shared.Services.OWM
         private readonly ILogger<ConnectOpenWeatherMap> _logger;
 
         private readonly HttpClient _httpClient;
-
+         
         public ConnectOpenWeatherMap(HttpClient httpClient, ILogger<ConnectOpenWeatherMap> logger)
         {
             _logger = logger;
@@ -29,11 +26,11 @@ namespace WeatherApplication.Shared.Services.OWM
             _settings = new OWMSettings();
         }
 
-        public async Task<WeatherData> GetCityData(string city)
+        public async Task<WeatherData> GetCityData(string name)
         {
             try
             {
-                HttpResponseMessage resp = await _httpClient.GetAsync(_settings.CityPref + city + _settings.Metric + _settings.APIKey).ConfigureAwait(false);
+                HttpResponseMessage resp = await _httpClient.GetAsync(_settings.CityPref + name + _settings.Metric + _settings.APIKey).ConfigureAwait(false);
                 if (resp.Content != null)
                 {
                     string responseString = await resp.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -69,11 +66,11 @@ namespace WeatherApplication.Shared.Services.OWM
         }
 
 
-        public async Task<WeatherForecastData> GetCityForecast(string city)
+        public async Task<WeatherForecastData> GetCityForecast(string name)
         {
             try
             {
-                var query = $"{_settings.ForecastUrl}?{_settings.CityPref}{city}&units=metric&{_settings.APIKey}";
+                var query = $"{_settings.ForecastUrl}?{_settings.CityPref}{name}&units=metric&{_settings.APIKey}";
                 OWMForecast resp = await _httpClient.GetFromJsonAsync<OWMForecast>(query).ConfigureAwait(false);
                 return resp.ToWeatherForecastData();
 

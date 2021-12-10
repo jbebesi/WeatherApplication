@@ -6,7 +6,7 @@ using WeatherApplication.Shared.Dtos.Misc;
 
 namespace WeatherApplication.Shared.Helpers
 {
-    public class LoadCityList
+    public static class LoadCityList
     {
         private static List<CityData> _cityList;
         public static List<CityData> GetCityList()

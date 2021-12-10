@@ -3,7 +3,7 @@ using WeatherApplication.Shared.Client.ViewModels;
 
 namespace WeatherApplication.Client
 {
-    public class Program
+    public static class Program
     {
         public static async Task Main(string[] args)
         {

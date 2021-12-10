@@ -5,7 +5,6 @@ using WeatherApplication.Shared.Dtos.Weather;
 
 namespace WeatherApplication.Shared.Dtos.OWM
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class Main
     {
         public double Temp { get; set; }

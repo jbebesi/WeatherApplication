@@ -349,3 +349,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /SourceCode/WeatherApplication/.sonarqube
+/SourceCode/WeatherApplication/.sonarlint
+/SourceCode/WeatherApplication/runSonar.bat

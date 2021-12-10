@@ -17,7 +17,15 @@ namespace WeatherApplication.Shared.Services
         }
         public async Task<WeatherForecastData> GetWeatherForecastsAsync(string city)
         {
-            return await _WeatherService.GetWeatherForecastsAsync(city);
+            try
+            {
+                return await _WeatherService.GetWeatherForecastsAsync(city);
+            }
+            catch (Exception ex)
+            {
+                _ILogger.LogError(ex.Message, ex);
+                return null;
+            }
         }
     }
 }
