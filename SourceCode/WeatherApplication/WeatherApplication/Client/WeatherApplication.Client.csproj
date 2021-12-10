@@ -6,6 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<SignAssembly>False</SignAssembly>
+		<CodeAnalysisRuleSet>..\..\.sonarlint\weatherapplication_weatherapplicationcsharp.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\weatherapplication_weatherapplication\CSharp\SonarLint.xml" Link="SonarLint.xml" />
     <Content Include="Components\Combobox.razor.css" />
   </ItemGroup>
 

@@ -18,13 +18,13 @@ namespace WeatherApplication.Shared.Dtos.Misc
 
     public struct Coordinate
     {
-        public double lat;
-        public double lon;
+        public double Lat { get; set; }
+        public double Lon { get; set; }
 
         public override string ToString()
         {
-            return "\tLat=" + lat.ToString() + Environment.NewLine +
-                "\tLon=" + lon.ToString() + Environment.NewLine;
+            return "\tLat=" + Lat.ToString() + Environment.NewLine +
+                "\tLon=" + Lon.ToString() + Environment.NewLine;
         }
     }
 }

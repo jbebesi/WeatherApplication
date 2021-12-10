@@ -8,7 +8,7 @@ namespace WeatherApplication.Shared.Services
 {
     public class CityListProvider : ICityListProvider
     {
-        private List<CityData> _cityList;
+        private readonly List<CityData> _cityList;
 
         public CityListProvider()
         {

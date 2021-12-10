@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
 
 namespace WeatherApplication.Server.Pages
@@ -21,7 +22,14 @@ namespace WeatherApplication.Server.Pages
 
         public void OnGet()
         {
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            try
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
         }
     }
 }
