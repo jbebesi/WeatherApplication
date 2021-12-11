@@ -4,15 +4,16 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using WeatherApplication.Shared.Client.interfaces;
 using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Dtos.Weather;
 
 namespace WeatherApplication.Shared.Client.ViewModels
 {
-    public class ShowWeatherDataViewModel
+    public class ShowWeatherDataViewModel : IShowWeatherDataViewModel
     {
 
-        public WeatherForecastData Forecasts { get; private set; }
+        public WeatherForecastData Forecasts { get; set; }
         private List<string> CityList;
         private readonly HttpClient _httpClient;
 
@@ -28,12 +29,14 @@ namespace WeatherApplication.Shared.Client.ViewModels
             }
         }
 
+        
+
         public ShowWeatherDataViewModel(HttpClient client)
         {
             _httpClient = client;
         }
 
-        public async Task<List<string>> UpdateCityList(string filter)
+        public async Task<IEnumerable<string>> UpdateCityList(string filter)
         {
             if (CityList == null)
             {
@@ -42,7 +45,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
             try
             {
                 var list = await _httpClient.GetFromJsonAsync<CityData[]>($"api/citylist/{filter}");
-                CityList.AddRange(list.Select(t => t.Text));
+                CityList.AddRange(list.Select(t => t.Text).Where(t=>!CityList.Contains(t)));
             }
             catch (Exception ex)
             {
@@ -52,7 +55,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
 
         }
 
-        public async Task<List<string>> GetCityList()
+        public async Task<IEnumerable<string>> GetCityList()
         {
             if (CityList == null)
                 try

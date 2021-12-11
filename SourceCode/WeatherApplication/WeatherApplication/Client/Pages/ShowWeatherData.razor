@@ -1,6 +1,7 @@
 @page "/showweatherdata"
 @using Microsoft.Extensions.Logging
-@inject ShowWeatherDataViewModel viewModel
+@using WeatherApplication.Shared.Client.interfaces
+@inject IShowWeatherDataViewModel viewModel
 @inject IndexViewModel location
 @inject ILogger<ShowWeatherData> logger
 
