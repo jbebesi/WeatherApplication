@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubscriptionService", "Subs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.ServerTests", "WeatherApplication\WeatherApplication.ServerTests\WeatherApplication.ServerTests.csproj", "{39392458-4344-4535-B8F0-D6DB10DEF215}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApplication.SharedTests", "WeatherApplication\WeatherApplication.SharedTests\WeatherApplication.SharedTests.csproj", "{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{39392458-4344-4535-B8F0-D6DB10DEF215}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39392458-4344-4535-B8F0-D6DB10DEF215}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39392458-4344-4535-B8F0-D6DB10DEF215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
