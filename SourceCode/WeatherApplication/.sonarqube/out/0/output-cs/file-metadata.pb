@@ -1,0 +1,24 @@
+õ
+ëC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\IndexViewModel.csutf-8•
+õC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\ShowWeatherDataViewModel.csutf-8ç
+ÉC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Misc\CityData.csutf-8ë
+áC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Misc\LocationData.csutf-8ë
+áC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Misc\Subscription.csutf-8è
+ÖC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\OWM\OWMForecast.csutf-8é
+ÑC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\OWM\OWMOneCall.csutf-8è
+ÖC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\OWM\OWMSettings.csutf-8í
+àC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\OWM\OWMWeatherData.csutf-8ì
+âC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Weather\WeatherData.csutf-8ó
+çC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Weather\WeatherForecast.csutf-8è
+ÖC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Helpers\LoadCityList.csutf-8ó
+çC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Interfaces\ICityListProvider.csutf-8ó
+çC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Interfaces\IWeatherDataStore.csutf-8ñ
+åC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Interfaces\IWeatherProvider.csutf-8ï
+ãC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Interfaces\IWeatherService.csutf-8ö
+éC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Properties\Resources.Designer.csutf-8î
+äC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Services\CityListProvider.csutf-8ù
+ìC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Services\OWM\ConnectOpenWeatherMap.csutf-8î
+äC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Services\WeatherDataStore.csutf-8í
+àC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Services\WeatherService.csutf-8π
+≠C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.csutf-8¥
+®C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\obj\Debug\net6.0\WeatherApplication.Shared.AssemblyInfo.csutf-8
