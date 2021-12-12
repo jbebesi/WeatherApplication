@@ -1,0 +1,12 @@
+{
+  "ServerUri": "https://sonarqubejbebesi.azurewebsites.net",
+  "Organization": null,
+  "ProjectKey": "WeatherApplication_WeatherApplication",
+  "ProjectName": "WeatherApplication",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AX2kdvBpIPdiRx1jGRRM",
+      "ProfileTimestamp": "2021-12-10T13:09:57Z"
+    }
+  }
+}

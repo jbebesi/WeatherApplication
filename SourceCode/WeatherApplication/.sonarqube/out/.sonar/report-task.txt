@@ -2,5 +2,5 @@ projectKey=WeatherApplication_WeatherApplication
 serverUrl=https://sonarqubejbebesi.azurewebsites.net
 serverVersion=9.2.1.49989
 dashboardUrl=https://sonarqubejbebesi.azurewebsites.net/dashboard?id=WeatherApplication_WeatherApplication
-ceTaskId=AX2mEMfZIPdiRx1jGSMe
-ceTaskUrl=https://sonarqubejbebesi.azurewebsites.net/api/ce/task?id=AX2mEMfZIPdiRx1jGSMe
+ceTaskId=AX2q5zUlIPdiRx1jGSMg
+ceTaskUrl=https://sonarqubejbebesi.azurewebsites.net/api/ce/task?id=AX2q5zUlIPdiRx1jGSMg
