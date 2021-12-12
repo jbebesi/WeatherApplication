@@ -1,12 +1,9 @@
-ô
-èC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\Controllers\CityListController.csutf-8û
-îC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\Controllers\SubscriptionsController.csutf-8†
-ñC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\Controllers\WeatherForecastController.csutf-8ç
-ÉC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\Pages\Error.cshtml.csutf-8Å
-xC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\Program.csutf-8Å
-xC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\Startup.csutf-8π
-≠C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.csutf-8¥
-®C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\obj\Debug\net6.0\WeatherApplication.Server.AssemblyInfo.csutf-8π
-≠C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Server\obj\Debug\net6.0\WeatherApplication.Server.RazorAssemblyInfo.csutf-8â
-~Microsoft.NET.Sdk.Razor.SourceGenerators\Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator\Pages_Error_cshtml.g.csutf-8ì
-áMicrosoft.NET.Sdk.Razor.SourceGenerators\Microsoft.NET.Sdk.Razor.SourceGenerators.RazorSourceGenerator\Pages_Shared__Layout_cshtml.g.csutf-8
+ò
+éC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\SubscriptionService\Controllers\SubscriptionsController.csutf-8ñ
+åC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\SubscriptionService\Interfaces\ISubscriptionInterface.csutf-8{
+rC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\SubscriptionService\Program.csutf-8ë
+áC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\SubscriptionService\Services\SubscriptionService.csutf-8{
+rC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\SubscriptionService\Startup.csutf-8≥
+ßC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\SubscriptionService\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.csutf-8®
+úC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\SubscriptionService\obj\Debug\net6.0\SubscriptionService.AssemblyInfo.csutf-8ª
+ØC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\SubscriptionService\obj\Debug\net6.0\SubscriptionService.MvcApplicationPartsAssemblyInfo.csutf-8

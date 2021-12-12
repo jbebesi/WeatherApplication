@@ -1,4 +1,5 @@
-õ
+¶
+úC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\interfaces\IShowWeatherDataViewModel.csutf-8õ
 ëC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\IndexViewModel.csutf-8•
 õC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\ShowWeatherDataViewModel.csutf-8ç
 ÉC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Misc\CityData.csutf-8ë

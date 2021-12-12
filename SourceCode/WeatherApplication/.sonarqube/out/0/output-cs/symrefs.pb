@@ -1,37 +1,55 @@
-¬
+ó
+œC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\interfaces\IShowWeatherDataViewModel.cs
+
+
+
+ .
+
+# ,
+
+" -
+
+ 
+
+  $
+
+" 0
+
+8 >¬
 ‘C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\IndexViewModel.cs
 
  
 
- Ü
+ ü
 ›C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\ShowWeatherDataViewModel.cs
 
- )
-# ,MM QQ P
- %&& (( -- 33 99 == CC <
-$ /!! ,,! ,<<% 0LL* 5MM" -
-   
+ )
+# ,PP TT Z
+ %)) ++ 00 00E M66 << @@ FF <
+$ /$$ //! ,??% 0OO* 5PP" -
+   
 
- "
-    !
-GG % 
+ "
+    !
+JJ % 
 
- '
-3 9!!  
+"" '
+""3 9$$  
 
-$$( 6
-$$> D,,Z `
-,, --" &
---. /--3 4
-// 11" $
+''/ =
+''E K//Z `
+// 00" &
+00. /003 4
+00A B00W X
+22 44" $
 
-77( 3
-<< == #
-==+ ,==0 1
-??! #AA& (
-GG- 1KK0 4
-KK LLC FMMT W
-OO SS !Æ
+::/ :
+?? @@ #
+@@+ ,@@0 1
+BB! #DD& (
+JJ- 1NN0 4
+NN OOC FPPT W
+RR VV !Æ
 ƒC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Misc\CityData.cs
 
  
@@ -580,15 +598,16 @@
 / G<
 O S/ 30 4"". 2%%A E&&# '
    !
-%% &&6 ='' Ï
+%% &&6 ='' ù
 ˆC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Services\WeatherService.cs
-		 ! /& 4
-1 9 
-+ :  (
+		 ! /& 4
+1 9  
++ :  ,
 
  
 6 < H N
 P ` .Y i
 
 / G
-O SB F
+O SF J
+ " $. 0

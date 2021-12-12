@@ -1,8 +1,9 @@
-£
-‘C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\IndexViewModel.cs 8r¡
+µ
+œC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\interfaces\IShowWeatherDataViewModel.cs8r	
+£
+‘C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\IndexViewModel.cs 8r¢
 ›C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Client\ViewModels\ShowWeatherDataViewModel.cs 8
-rY
- !"$%&'()*+,-./01235789:;<=>?@ABCDGHIJKLMNOPQRSTUVWXYZ[\]^_`bdex‚!&(,-139<=ACLMQSUVWXYZ[\]°
+rZ	"#$%'()*+,-./01234568:;<=>?@ABCDEFGJKLMNOPQRSTUVWXYZ[\]^_`abceghx‚$)+/046<?@DFOPTVXYZ[\]^_`°
 ƒC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Misc\CityData.cs 8r	
 ‚±
 ‡C:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Dtos\Misc\LocationData.cs 8r	‚ž
@@ -39,6 +40,6 @@ r
  !"#$%&'()*+,-.0123456789:;<=>?@ABEFGHIJKMNOPQRSTUVWXZ[\]^_`abcdefghix‚!"$%&+-45689:?AIJKPRXZ[]^_dfË
 ŠC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Services\WeatherDataStore.cs 8r%	
  !"#$%&'()*x‚
-"%&'±
-ˆC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Services\WeatherService.cs 8r	
-‚
+"%&'½
+ˆC:\Users\Janos Bebesi\source\repos\WeatherApplication\SourceCode\WeatherApplication\WeatherApplication\Shared\Services\WeatherService.cs 8r	
+x‚
