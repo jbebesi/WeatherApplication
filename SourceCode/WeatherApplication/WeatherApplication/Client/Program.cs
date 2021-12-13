@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using WeatherApplication.Shared.Client.interfaces;
 using WeatherApplication.Shared.Client.ViewModels;
 
 namespace WeatherApplication.Client
@@ -11,7 +12,7 @@ namespace WeatherApplication.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddScoped<ShowWeatherDataViewModel>();
+            builder.Services.AddScoped<IShowWeatherDataViewModel, ShowWeatherDataViewModel>();
             builder.Services.AddScoped<IndexViewModel>();
             builder.Services.AddLogging();
 
