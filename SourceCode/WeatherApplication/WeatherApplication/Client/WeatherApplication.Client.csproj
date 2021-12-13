@@ -7,6 +7,8 @@
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<SignAssembly>False</SignAssembly>
 		<CodeAnalysisRuleSet>..\..\.sonarlint\weatherapplication_weatherapplicationcsharp.ruleset</CodeAnalysisRuleSet>
+		<UserSecretsId>1586b6e9-984f-42ca-b264-78610c0dca01</UserSecretsId>
+		<ApplicationInsightsResourceId>/subscriptions/956a3f72-3608-40b2-bb9d-90b0f69ed0fc/resourceGroups/WettaDev/providers/microsoft.insights/components/WeatherApplicationServer</ApplicationInsightsResourceId>
 	</PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

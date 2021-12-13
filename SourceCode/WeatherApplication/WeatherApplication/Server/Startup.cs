@@ -31,6 +31,7 @@ namespace WeatherApplication.Server
             services.AddScoped<ICityListProvider, CityListProvider>();
             services.AddScoped<HttpClient>();
             services.AddRazorPages();
+            services.AddApplicationInsightsTelemetry(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
