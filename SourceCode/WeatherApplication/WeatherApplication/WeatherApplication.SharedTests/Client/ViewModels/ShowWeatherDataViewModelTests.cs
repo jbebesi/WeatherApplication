@@ -11,6 +11,7 @@ using Moq.Protected;
 using System.Threading;
 using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Dtos.Weather;
+using Microsoft.Extensions.Logging;
 
 namespace WeatherApplication.Shared.Client.ViewModels.Tests
 {
@@ -18,17 +19,19 @@ namespace WeatherApplication.Shared.Client.ViewModels.Tests
     public class ShowWeatherDataViewModelTests
     {
         private const int cNumberOfCitiesTaken = 5;
-        Mock<HttpMessageHandler>? _handler;
+        Mock<HttpMessageHandler>? _mockHandler;
+        Mock<ILogger<ShowWeatherDataViewModel>> _mockLogger;
 
         ShowWeatherDataViewModel CreateModel()
         {
-            _handler = new Mock<HttpMessageHandler>();
-            var result = new ShowWeatherDataViewModel(new HttpClient(_handler.Object) { BaseAddress= new Uri("http://localhost:80/")});
+            _mockHandler = new Mock<HttpMessageHandler>();
+            _mockLogger = new Mock<ILogger<ShowWeatherDataViewModel>>();
+            var result = new ShowWeatherDataViewModel(new HttpClient(_mockHandler.Object) { BaseAddress= new Uri("http://localhost:80/")}, _mockLogger.Object);
             return result;
         }
         void AddCitysToHandler()
         {
-            _handler.Protected()
+            _mockHandler.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
             .Returns(async (HttpRequestMessage request, CancellationToken token) => {
                 HttpResponseMessage response = new HttpResponseMessage();
@@ -65,7 +68,7 @@ namespace WeatherApplication.Shared.Client.ViewModels.Tests
         }
         void AddWeatherToHandler()
         {
-            _handler.Protected()
+            _mockHandler.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
             .Returns(async (HttpRequestMessage request, CancellationToken token) => {
                 HttpResponseMessage response = new HttpResponseMessage();
