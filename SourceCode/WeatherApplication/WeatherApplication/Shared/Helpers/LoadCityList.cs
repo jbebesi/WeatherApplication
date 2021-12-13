@@ -11,17 +11,10 @@ namespace WeatherApplication.Shared.Helpers
         private static List<CityData> _cityList;
         public static List<CityData> GetCityList()
         {
-            try
+            if (_cityList == null)
             {
-                if (_cityList == null)
-                {
-                    string s = System.Text.Encoding.UTF8.GetString(Properties.Resources.city_list);
-                    _cityList = JsonConvert.DeserializeObject<List<CityData>>(s).ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                string s = System.Text.Encoding.UTF8.GetString(Properties.Resources.city_list);
+                _cityList = JsonConvert.DeserializeObject<List<CityData>>(s).ToList();
             }
             return _cityList;
         }

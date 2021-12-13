@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -16,6 +17,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
         public WeatherForecastData Forecasts { get; set; }
         private List<string> CityList;
         private readonly HttpClient _httpClient;
+        private readonly ILogger<ShowWeatherDataViewModel> _logger;
 
 
         private string selected;
@@ -31,9 +33,10 @@ namespace WeatherApplication.Shared.Client.ViewModels
 
         
 
-        public ShowWeatherDataViewModel(HttpClient client)
+        public ShowWeatherDataViewModel(HttpClient client, ILogger<ShowWeatherDataViewModel> logger)
         {
-            _httpClient = client;
+            _httpClient = client ?? throw new ArgumentNullException($"{nameof(client)} can not be null!");
+            _logger = logger ?? throw new ArgumentNullException($"{nameof(logger)} can not be null!");
         }
 
         public async Task<IEnumerable<string>> UpdateCityList(string filter)
@@ -49,7 +52,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _logger.LogWarning(ex.Message, ex);
             }
             return CityList;
 
@@ -65,7 +68,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    _logger.LogWarning(ex.Message, ex);
                 }
             return CityList;
         }
@@ -76,26 +79,11 @@ namespace WeatherApplication.Shared.Client.ViewModels
             try
             {
                 string url = $"WeatherForecast/{city}";
-                Console.WriteLine($"call:{_httpClient.BaseAddress}{url}");
                 Forecasts = await _httpClient.GetFromJsonAsync<WeatherForecastData>(url);
             }
             catch (Exception ex)
             {
-                Forecasts = new WeatherForecastData
-                {
-                    CityName = ex.Message,
-                    CountryName = "CountryEx",
-                    Weather = new WeatherData[] {
-                    new WeatherData(){ DateTime = DateTime.Now , TemperatureFeelsLike = 25 , LooksLike = "LooksLike" , Temperature = 30 , LocationName ="Location" , WindDirection = 3 , WindSpeed = 12},
-                    new WeatherData(){ DateTime = DateTime.Now.AddMinutes(1) , TemperatureFeelsLike = 25 , LooksLike = "LooksLike" , Temperature = 30 , LocationName ="Location" , WindDirection = 3 , WindSpeed = 12},
-                    new WeatherData(){ DateTime = DateTime.Now.AddMinutes(2) , TemperatureFeelsLike = 25 , LooksLike = "LooksLike" , Temperature = 30 , LocationName ="Location" , WindDirection = 3 , WindSpeed = 12},
-                    new WeatherData(){ DateTime = DateTime.Now.AddMinutes(3) , TemperatureFeelsLike = 25 , LooksLike = "LooksLike" , Temperature = 30 , LocationName ="Location" , WindDirection = 3 , WindSpeed = 12},
-                    new WeatherData(){ DateTime = DateTime.Now.AddMinutes(4) , TemperatureFeelsLike = 25 , LooksLike = "LooksLike" , Temperature = 30 , LocationName ="Location" , WindDirection = 3 , WindSpeed = 12},
-                    new WeatherData(){ DateTime = DateTime.Now.AddMinutes(5) , TemperatureFeelsLike = 25 , LooksLike = "LooksLike" , Temperature = 30 , LocationName ="Location" , WindDirection = 3 , WindSpeed = 12},
-                    new WeatherData(){ DateTime = DateTime.Now.AddMinutes(6) , TemperatureFeelsLike = 25 , LooksLike = "LooksLike" , Temperature = 30 , LocationName ="Location" , WindDirection = 3 , WindSpeed = 12},
-                    new WeatherData(){ DateTime = DateTime.Now.AddMinutes(7) , TemperatureFeelsLike = 25 , LooksLike = "LooksLike" , Temperature = 30 , LocationName ="Location" , WindDirection = 3 , WindSpeed = 12}
-                }
-                };
+                _logger.LogWarning(ex.Message, ex);
             }
 
         }
