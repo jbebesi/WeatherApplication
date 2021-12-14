@@ -29,21 +29,21 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: SonarQubePrepare@4
-  inputs:
-    SonarQube: 'Sonar'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'WeatherApp'
-    cliProjectName: 'WeatherApp'
-    cliSources: '.'
-- task: SonarQubeAnalyze@4
-  displayName: 'Run Code Analysis'
+# - task: SonarQubePrepare@4
+#   inputs:
+#     SonarQube: 'Sonar'
+#     scannerMode: 'CLI'
+#     configMode: 'manual'
+#     cliProjectKey: 'WeatherApp'
+#     cliProjectName: 'WeatherApp'
+#     cliSources: '.'
+# - task: SonarQubeAnalyze@4
+#   displayName: 'Run Code Analysis'
 
-- task: SonarQubePublish@4
-  displayName: 'Publish Quality Gate Result'
-  inputs:
-    pollingTimeoutSec: '300'
+# - task: SonarQubePublish@4
+#   displayName: 'Publish Quality Gate Result'
+#   inputs:
+#     pollingTimeoutSec: '300'
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
