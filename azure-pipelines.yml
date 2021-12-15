@@ -21,13 +21,6 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-- task: SonarQubePrepare@5
-  inputs:
-    SonarQube: 'Sonar'
-    scannerMode: 'MSBuild'
-    projectKey: 'WeatherApplication_WeatherApplication'
-    projectName: 'WeatherApp'
-
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -35,26 +28,6 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: SonarQubeAnalyze@5
-
-- task: SonarQubePublish@5
-  inputs:
-    pollingTimeoutSec: '300'
-# - task: SonarQubePrepare@4
-#   inputs:
-#     SonarQube: 'Sonar'
-#     scannerMode: 'CLI'
-#     configMode: 'manual'
-#     cliProjectKey: 'WeatherApp'
-#     cliProjectName: 'WeatherApp'
-#     cliSources: '.'
-# - task: SonarQubeAnalyze@4
-#   displayName: 'Run Code Analysis'
-
-# - task: SonarQubePublish@4
-#   displayName: 'Publish Quality Gate Result'
-#   inputs:
-#     pollingTimeoutSec: '300'
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
