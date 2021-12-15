@@ -21,6 +21,12 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'Sonar'
+    scannerMode: 'MSBuild'
+    projectKey: 'WeatherApplication_WeatherApplication'
+    projectName: 'WeatherApp'
 
 - task: VSBuild@1
   inputs:
@@ -29,6 +35,11 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: SonarQubeAnalyze@5
+
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '300'
 # - task: SonarQubePrepare@4
 #   inputs:
 #     SonarQube: 'Sonar'
