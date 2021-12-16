@@ -1,13 +1,61 @@
 ﻿# Main Environment settings.
-$appName = "weatherapp"
+$appName = "weatherappjbebesi"
 $resourceGroup = $appName + "dev"
 $location = "westeurope"
-$sonarqaciname = "sonart" + $resourceGroup
+$sonarqaciname = "sonar" + $resourceGroup
 $acrname = "acr" + $resourceGroup
 $appServicePlan = $appName + "serviceplan"
 
+$devopsprojectexists = $false
+$devopsservice = $appName
+
+#### Setup Azure devops
+
+$devopsservice = Read-Host -Prompt 'Type the of URL DevOps with your organization e.g. : https://dev.azure.com/your_orgnization_name'
+$env:AZURE_DEVOPS_EXT_PAT ="tvxrvghc7cysmqtsxyruajkubk7u2ngrwv7znqsrjkmodm2niqka"
+Write-Host 'Get projectllist from ' + $devopsservice
+$a = az devops project list --organization $devopsservice --query value[].name -o tsv
+# To validate if the resource already exists
+try 
+{
+    foreach ($item in $a) {
+        switch ($item) {
+            ($appName)
+            { 
+                $devopsprojectexists = $true
+                Write-Host "project exists:" + $appName
+            }
+           
+        }
+    }
+}
+catch 
+{
+    Ignore this error
+}
+
+# Create a Key Vault to store secrets
+Write-Host 'Creating '+ $appName+ ' project if not exists.....' 
+if ($devopsprojectexists -eq $false)
+{
+    az devops project create --name $appName --organization $devopsservice
+}
 
 
+az devops configure --defaults project="DevSecOps" organization=$devopsservice
+
+Write-Host 'Adding security extensions to your Azure DevOps'
+az devops extension install --extension-id 'AzSDK-task' --publisher-id 'azsdktm' --detect true
+az devops extension install --extension-id 'sonarqube' --publisher-id 'SonarSource' --detect true
+az devops extension install --extension-id 'replacetokens' --publisher-id 'qetza' --detect true
+az devops extension install --extension-id 'ws-bolt' --publisher-id 'whitesource' --detect true
+
+
+# Register the network provider
+az provider register --namespace Microsoft.Network
+
+
+##### Setup Azure services
 $items = az resource list --query --% "[?contains(name,'weatherapp')].[name]" -o table
 
 #Variables to use during execution
@@ -32,8 +80,6 @@ catch
 {
     #ignore 
 }
-
-
 
 # Create a ressource groupe
 Write-Host 'Running Resource Group .....' 
@@ -61,7 +107,7 @@ if ($acrexists -eq $false)
 Write-Host 'Running SonarQube .....' 
 if ($snrexists -eq $false)
 {
-    az container create -g $($resourceGroup) --name $sonarqaciname --image  sonarqube --ports 9000 --dns-name-label $sonarqaciname'dns' --cpu 2 --memory 3.5
+    az container create -g $($resourceGroup) --name $sonarqaciname --image  sonarqube:latest --ports 9000 --dns-name-label $sonarqaciname'dns' --cpu 2 --memory 3.5
     Write-Host 'Azure Web App SonarQube : ' + $sonarqaciname + ' created '
 }
 else
