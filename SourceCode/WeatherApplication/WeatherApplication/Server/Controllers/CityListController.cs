@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Misc;
@@ -24,18 +25,34 @@ namespace WeatherApplication.Server.Controllers
 
         // GET: api/<CityListController>
         [HttpGet()]
-        public async Task<IEnumerable<CityData>> Get()
+        //public IEnumerable<CityData> Get()
+        public IActionResult Get()
         {
-            var result = _cityListProvider.GetCityList("");
-            return await Task.FromResult(result);
+            try
+            {
+                return Ok(_cityListProvider.GetCityList(""));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex.Message,ex);
+                return BadRequest("Getting citylist failed");
+            }
         }
 
         // GET api/<CityListController>/5
         [HttpGet("{filter}")]
-        public async Task<IEnumerable<CityData>> Get(string filter)
+        //public async Task<IEnumerable<CityData>> Get(string filter)
+        public IActionResult Get(string filter)
         {
-            var result = _cityListProvider.GetCityList(filter);
-            return await Task.FromResult(result);
+            try
+            {
+                return Ok(_cityListProvider.GetCityList(filter));
+            }
+            catch(Exception ex)
+            {
+                _logger.LogWarning(ex.Message, ex);
+                return BadRequest("Filtering citylist is failed");
+            }
         }
     }
 }

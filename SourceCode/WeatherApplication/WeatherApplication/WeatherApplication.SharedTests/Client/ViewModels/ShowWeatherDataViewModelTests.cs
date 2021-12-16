@@ -51,9 +51,9 @@ namespace WeatherApplication.Shared.Client.ViewModels.Tests
                         new CityData(){ Country="T" , Name = "Test4C" },
                         new CityData(){ Country="T" , Name = "Test4D" }
                     };
-                IEnumerable<CityData> res; ;
-                var search = request.RequestUri.AbsolutePath.Split("api/citylist/");
-                if(search.Length >1)
+                IEnumerable<CityData> res;
+                var search = request?.RequestUri?.AbsolutePath.Split("api/citylist/");
+                if(search?.Length >1)
                 {
                     res = cityList.Where(t => t.Name.Contains(search[1])).Take(cNumberOfCitiesTaken);
                 }
@@ -62,7 +62,7 @@ namespace WeatherApplication.Shared.Client.ViewModels.Tests
                     res = cityList.Take(cNumberOfCitiesTaken);
                 }
                 response.Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(res));
-                return response;
+                return await Task.FromResult(response);
             })
             .Verifiable();
         }
@@ -82,7 +82,7 @@ namespace WeatherApplication.Shared.Client.ViewModels.Tests
                     } 
                 };
                 response.Content = new StringContent(System.Text.Json.JsonSerializer.Serialize(weather));
-                return response;
+                return await Task.FromResult(response);
             })
             .Verifiable();
         }
