@@ -23,8 +23,8 @@ stages:
         SonarQube: 'Sonar'
         scannerMode: 'CLI'
         configMode: 'manual'
-        cliProjectKey: 'DevSecOps'
-        cliProjectName: 'DevSecOps'
+        cliProjectKey: 'WeatherApplication'
+        cliProjectName: 'WeatherApplication_WeatherApplication'
         cliSources: '.'
 
     #Module-4 - Exercise 2
