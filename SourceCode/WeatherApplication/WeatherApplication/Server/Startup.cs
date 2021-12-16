@@ -23,7 +23,6 @@ namespace WeatherApplication.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllersWithViews();
             services.AddScoped<IWeatherService, WeatherService>();
             services.AddScoped<IWeatherDataStore, WeatherDataStore>();
@@ -31,6 +30,7 @@ namespace WeatherApplication.Server
             services.AddScoped<ICityListProvider, CityListProvider>();
             services.AddScoped<HttpClient>();
             services.AddRazorPages();
+
             services.AddApplicationInsightsTelemetry(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
         }
 
@@ -41,6 +41,7 @@ namespace WeatherApplication.Server
             {
                 app.UseDeveloperExceptionPage();
                 app.UseWebAssemblyDebugging();
+                
             }
             else
             {

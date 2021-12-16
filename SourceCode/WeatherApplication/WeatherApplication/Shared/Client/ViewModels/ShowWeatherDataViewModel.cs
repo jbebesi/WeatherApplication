@@ -13,14 +13,12 @@ namespace WeatherApplication.Shared.Client.ViewModels
 {
     public class ShowWeatherDataViewModel : IShowWeatherDataViewModel
     {
-
         public WeatherForecastData Forecasts { get; set; }
         private List<string> CityList;
         private readonly HttpClient _httpClient;
         private readonly ILogger<ShowWeatherDataViewModel> _logger;
-
-
         private string selected;
+        
         public string SelectedCity
         {
             get => selected;
@@ -30,8 +28,6 @@ namespace WeatherApplication.Shared.Client.ViewModels
                 GetForecast(value).Wait();
             }
         }
-
-        
 
         public ShowWeatherDataViewModel(HttpClient client, ILogger<ShowWeatherDataViewModel> logger)
         {
@@ -73,7 +69,6 @@ namespace WeatherApplication.Shared.Client.ViewModels
             return CityList;
         }
 
-
         public async Task GetForecast(string city)
         {
             try
@@ -85,8 +80,6 @@ namespace WeatherApplication.Shared.Client.ViewModels
             {
                 _logger.LogWarning(ex.Message, ex);
             }
-
         }
-
     }
 }
