@@ -1,9 +1,9 @@
 ﻿# Main Environment settings.
 $appName = "weatherappjbebesi"
-$resourceGroup = $appName + "dev"
+$resourceGroup = "jbebesiPET"
 $location = "westeurope"
-$sonarqaciname = "sonar" + $resourceGroup
-$acrname = "acr" + $resourceGroup
+$sonarqaciname = "sonarjbebesipet"
+$acrname = "acrjbebesipet"
 $appServicePlan = $appName + "serviceplan"
 
 $devopsprojectexists = $false
@@ -12,7 +12,7 @@ $devopsservice = $appName
 #### Setup Azure devops
 
 $devopsservice = Read-Host -Prompt 'Type the of URL DevOps with your organization e.g. : https://dev.azure.com/your_orgnization_name'
-$env:AZURE_DEVOPS_EXT_PAT ="tvxrvghc7cysmqtsxyruajkubk7u2ngrwv7znqsrjkmodm2niqka"
+$env:AZURE_DEVOPS_EXT_PAT =Read-Host -Prompt 'Type your PAT (Personal Access Token) for Azure Devops)
 Write-Host 'Get projectllist from ' + $devopsservice
 $a = az devops project list --organization $devopsservice --query value[].name -o tsv
 # To validate if the resource already exists
@@ -42,8 +42,9 @@ if ($devopsprojectexists -eq $false)
 }
 
 
-az devops configure --defaults project="DevSecOps" organization=$devopsservice
+az repos import create --git-source-url 'https://github.com/jbebesi' --detect true --project $appName --repository "WeatherApplication"
 
+az devops configure --defaults project=$appName organization=$devopsservice
 Write-Host 'Adding security extensions to your Azure DevOps'
 az devops extension install --extension-id 'AzSDK-task' --publisher-id 'azsdktm' --detect true
 az devops extension install --extension-id 'sonarqube' --publisher-id 'SonarSource' --detect true
@@ -100,14 +101,14 @@ if ($acrexists -eq $false)
     write-host 'azure container registry : ' + $acrname + ' created '
 }else
 {
-    Write-Host('acr already exists');
+    Write-Host('acr already exists'+ $acrname);
 }
 
 # Create service SonarQube  in Azure Container Instances
 Write-Host 'Running SonarQube .....' 
 if ($snrexists -eq $false)
 {
-    az container create -g $($resourceGroup) --name $sonarqaciname --image  sonarqube:latest --ports 9000 --dns-name-label $sonarqaciname'dns' --cpu 2 --memory 3.5
+    az container create -g $($resourceGroup) --name $sonarqaciname --image  sonarqube:8.9.5-community --ports 9000 --dns-name-label $sonarqaciname'dns' --cpu 2 --memory 3.5
     Write-Host 'Azure Web App SonarQube : ' + $sonarqaciname + ' created '
 }
 else
