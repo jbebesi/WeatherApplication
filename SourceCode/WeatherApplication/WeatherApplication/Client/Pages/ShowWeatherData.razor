@@ -1,5 +1,6 @@
 @page "/showweatherdata"
 @using Microsoft.Extensions.Logging
+
 @using WeatherApplication.Shared.Client.interfaces
 @inject IShowWeatherDataViewModel viewModel
 @inject IndexViewModel location
@@ -11,8 +12,8 @@
     {
         <h1 class="center">@viewModel.Forecasts.CityName ,@viewModel.Forecasts.CountryName</h1>
 
-        <WeatherApplication.Client.Components.MainWeatherData ForecastData="@viewModel.Forecasts" />
-        <WeatherApplication.Client.Components.ForecastGrid Data="@viewModel.Forecasts.Weather" />
+        <MainWeatherData ForecastData="@viewModel.Forecasts" />
+        <ForecastGrid Data="@viewModel.Forecasts.Weather" />
     }
 </EditForm>
 

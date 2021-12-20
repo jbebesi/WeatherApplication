@@ -31,8 +31,8 @@ namespace WeatherApplication.Shared.Client.ViewModels
 
         public ShowWeatherDataViewModel(HttpClient client, ILogger<ShowWeatherDataViewModel> logger)
         {
-            _httpClient = client ?? throw new ArgumentNullException($"{nameof(client)} can not be null!");
-            _logger = logger ?? throw new ArgumentNullException($"{nameof(logger)} can not be null!");
+            _httpClient = client ?? throw new ArgumentException("can not be null!",nameof(client));
+            _logger = logger ?? throw new ArgumentException("can not be null!", nameof(logger));
         }
 
         public async Task<IEnumerable<string>> UpdateCityList(string filter)

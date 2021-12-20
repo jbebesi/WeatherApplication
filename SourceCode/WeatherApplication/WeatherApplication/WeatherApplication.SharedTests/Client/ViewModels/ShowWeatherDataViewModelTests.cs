@@ -20,7 +20,7 @@ namespace WeatherApplication.Shared.Client.ViewModels.Tests
     {
         private const int cNumberOfCitiesTaken = 5;
         Mock<HttpMessageHandler>? _mockHandler;
-        Mock<ILogger<ShowWeatherDataViewModel>> _mockLogger;
+        Mock<ILogger<ShowWeatherDataViewModel>>? _mockLogger;
 
         ShowWeatherDataViewModel CreateModel()
         {
