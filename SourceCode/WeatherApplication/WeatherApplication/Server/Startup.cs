@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System.Net.Http;
+using WeatherApplication.Shared.Dtos.OWM;
 using WeatherApplication.Shared.Interfaces;
 using WeatherApplication.Shared.Services;
 using WeatherApplication.Shared.Services.OWM;
@@ -26,7 +28,18 @@ namespace WeatherApplication.Server
             services.AddControllersWithViews();
             services.AddScoped<IWeatherService, WeatherService>();
             services.AddScoped<IWeatherDataStore, WeatherDataStore>();
-            services.AddScoped<IWeatherProvider, ConnectOpenWeatherMap>();
+            services.AddScoped<IWeatherProvider, ConnectOpenWeatherMap>(provider => new ConnectOpenWeatherMap(
+                provider.GetService<HttpClient>(),
+                provider.GetService<ILogger<ConnectOpenWeatherMap>>(), new OWMSettings()
+                {
+                    APIKey = Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.APIKey)}").Value,
+                    OneCallAPI = Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.OneCallAPI)}").Value,
+                    ForecastUrl = Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.ForecastUrl)}").Value,
+                    CityPref = Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.CityPref)}").Value,
+                    Metric = Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Metric)}").Value,
+                    Lat = Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Lat)}").Value,
+                    Lon = Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Lon)}").Value
+                }));
             services.AddScoped<ICityListProvider, CityListProvider>();
             services.AddScoped<HttpClient>();
             services.AddRazorPages();
