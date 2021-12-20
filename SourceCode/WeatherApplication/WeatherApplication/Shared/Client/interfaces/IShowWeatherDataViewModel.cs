@@ -11,7 +11,7 @@ namespace WeatherApplication.Shared.Client.interfaces
     {
         public WeatherForecastData Forecasts { get; protected set; }
         Task<IEnumerable<string>> GetCityList();
-        Task GetForecast(string name);
+        Task GetForecast(string city);
         Task<IEnumerable<string>> UpdateCityList(string filter);
     }
 }

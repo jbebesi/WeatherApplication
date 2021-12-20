@@ -20,24 +20,11 @@ namespace WeatherApplication.Shared.Services.OWM
 
         private readonly HttpClient _httpClient;
          
-        public ConnectOpenWeatherMap(HttpClient httpClient, ILogger<ConnectOpenWeatherMap> logger, IConfiguration config)
+        public ConnectOpenWeatherMap(HttpClient httpClient, ILogger<ConnectOpenWeatherMap> logger, OWMSettings settings)
         {
             _logger = logger;
             _httpClient = httpClient;
-            var settings = config.GetSection($"{OWMSettings.Settings}:APIKey");
-            var fo = config.GetSection($"{OWMSettings.Settings}:ForecastUrl");
-            var apiKey = nameof(OWMSettings.APIKey);
-            var key = settings.GetSection(apiKey).Value;
-            _settings = new OWMSettings()
-            {
-                APIKey = config.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.APIKey)}").Value,
-                OneCallAPI = config.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.OneCallAPI)}").Value,
-                ForecastUrl = config.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.ForecastUrl)}").Value,
-                CityPref = config.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.CityPref)}").Value,
-                Metric= config.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Metric)}").Value,
-                Lat = config.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Lat)}").Value,
-                Lon= config.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Lon)}").Value
-            };
+            _settings = settings; 
         }
 
         public async Task<WeatherData> GetCityData(string name)
