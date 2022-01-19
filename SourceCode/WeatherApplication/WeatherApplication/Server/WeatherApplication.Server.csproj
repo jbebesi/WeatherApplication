@@ -7,7 +7,7 @@
     <DockerfileContext>..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
     <CodeAnalysisRuleSet>..\..\.sonarlint\weatherapplication_weatherapplicationcsharp.ruleset</CodeAnalysisRuleSet>
-    <ApplicationInsightsResourceId>/subscriptions/956a3f72-3608-40b2-bb9d-90b0f69ed0fc/resourceGroups/WettaDev/providers/microsoft.insights/components/WeatherApplicationServer</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/f1ebcf7a-0c77-44b1-b03a-31a48a8b9fcd/resourceGroups/WettaDev/providers/microsoft.insights/components/WettaDev</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
