@@ -22,9 +22,9 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     - name: Restore
-      run: dotnet restore "${{ env.WORKING_DIRECTORY }}\\WeatherApplication.Server.csproj"
+      run: dotnet restore "${{ env.WORKING_DIRECTORY }}\WeatherApplication.Server.csproj"
     - name: Build
-      run: dotnet build "${{ env.WORKING_DIRECTORY }}/WeatherApplication.Server.csproj" --configuration ${{ env.CONFIGURATION }} --no-restore
+      run: dotnet build "${{ env.WORKING_DIRECTORY }}\WeatherApplication.Server.csproj" --configuration ${{ env.CONFIGURATION }} --no-restore
     - name: Test
       run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
     - name: Publish
