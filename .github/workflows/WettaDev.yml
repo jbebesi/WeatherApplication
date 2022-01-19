@@ -1,8 +1,10 @@
 name: Build and deploy .NET Core app to Windows WebApp WettaDev
 on:
   push:
-    branches:
-    - master
+    branches: [ main ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ main ]
 env:
   AZURE_WEBAPP_NAME: WettaDev
   AZURE_WEBAPP_PACKAGE_PATH: WeatherApplication\Server/publish
