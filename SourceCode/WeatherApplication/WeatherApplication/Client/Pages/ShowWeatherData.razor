@@ -1,7 +1,8 @@
 @page "/showweatherdata"
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.Extensions.Logging
 
-
+@attribute [Authorize]
 @inject IShowWeatherDataViewModel viewModel
 @inject IndexViewModel location
 @inject ILogger<ShowWeatherData> logger
