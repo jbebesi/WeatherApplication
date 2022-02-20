@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using WeatherApplication.Server.Data;
+using WeatherApplication.Server.interfaces;
 using WeatherApplication.Server.Models;
+using WeatherApplication.Server.Services;
 using WeatherApplication.Shared.Dtos.OWM;
 using WeatherApplication.Shared.Interfaces;
 using WeatherApplication.Shared.Services;
@@ -24,11 +26,23 @@ builder.Services.AddIdentityServer()
 
 builder.Services.AddAuthentication()
     .AddIdentityServerJwt();
+    //.AddGoogle(options =>
+    //{
+    //    IConfigurationSection googleAuthNSection =
+    //    builder.Configuration.GetSection("Authentication:Google");
+    //    options.ClientId = googleAuthNSection["ClientId"];
+    //    options.ClientSecret = googleAuthNSection["ClientSecret"];
+    //});
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 
+//builder.Services.AddOidcAuthentication(options => {
+//    builder.Configuration.Bind("Local", options.ProviderOptions);
+//});
+
+builder.Services.AddScoped<ISubscriptionHelper, SubscriptionHelper>();
 
 builder.Services.AddScoped<IWeatherService, WeatherService>();
 builder.Services.AddScoped<IWeatherDataStore, WeatherDataStore>();
