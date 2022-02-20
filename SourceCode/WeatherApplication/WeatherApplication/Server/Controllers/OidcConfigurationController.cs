@@ -18,8 +18,16 @@ namespace WeatherApplication.Server.Controllers
         [HttpGet("_configuration/{clientId}")]
         public IActionResult GetClientRequestParameters([FromRoute] string clientId)
         {
-            var parameters = ClientRequestParametersProvider.GetClientParameters(HttpContext, clientId);
-            return Ok(parameters);
+            try
+            {
+                var parameters = ClientRequestParametersProvider.GetClientParameters(HttpContext, clientId);
+                return Ok(parameters);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error",ex);
+                return BadRequest($"Error happened + {ex.Message}");
+            }
         }
     }
 }

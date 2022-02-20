@@ -4,6 +4,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using WeatherApplication.Server.interfaces;
 using WeatherApplication.Shared.Dtos.Misc;
 
 namespace WeatherApplication.Server.Controllers
@@ -15,24 +16,27 @@ namespace WeatherApplication.Server.Controllers
 
 
         private readonly ILogger<SubscriptionsController> _logger;
+        private readonly ISubscriptionHelper _subscriptionHelper;
 
-        public SubscriptionsController(ILogger<SubscriptionsController> logger)
+        public SubscriptionsController(ILogger<SubscriptionsController> logger,ISubscriptionHelper subscriptionHelper)
         {
             _logger = logger;
+            _subscriptionHelper = subscriptionHelper;
         }
 
         [HttpGet]
-        public async Task<Subscription> Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
-                var client = new HttpClient() { BaseAddress = new Uri("http://subscriptionservice:80") };
-                return await client.GetFromJsonAsync<Subscription>("Subscriptions");
+                //var client = new HttpClient() { BaseAddress = new Uri("http://subscriptionservice:80") };
+                //return await client.GetFromJsonAsync<Subscription>("Subscriptions");
+                return Ok(await _subscriptionHelper.GetApplicationUsersAsync());
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return new Subscription() { FirstName = $"Message:{ex.Message}" };
+                return  BadRequest($"Message:{ex.Message}");
             }
         }
     }
