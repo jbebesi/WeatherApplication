@@ -5,11 +5,15 @@ VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubscriptionService", "SubscriptionService\SubscriptionService.csproj", "{C4EF4C01-02FD-44C0-912D-7E092393ED2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApplication.Server", "WeatherApplication\Server\WeatherApplication.Server.csproj", "{49359D9B-C788-47DD-8EB6-84735A357D0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Server", "WeatherApplication\Server\WeatherApplication.Server.csproj", "{49359D9B-C788-47DD-8EB6-84735A357D0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApplication.Client", "WeatherApplication\Client\WeatherApplication.Client.csproj", "{B15B59A6-096A-4C17-B473-637C52C3E2C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Client", "WeatherApplication\Client\WeatherApplication.Client.csproj", "{B15B59A6-096A-4C17-B473-637C52C3E2C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApplication.Shared", "WeatherApplication\Shared\WeatherApplication.Shared.csproj", "{D192054A-1262-41C1-B320-3718F0C9EA6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Shared", "WeatherApplication\Shared\WeatherApplication.Shared.csproj", "{D192054A-1262-41C1-B320-3718F0C9EA6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestTools", "TestTools", "{E99A9348-9653-4776-968A-7B6932A114B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "TestTools\Client\Client.csproj", "{13A7AA23-E8AE-433E-A944-8739F9D7E56E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,16 @@ Global
 		{D192054A-1262-41C1-B320-3718F0C9EA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D192054A-1262-41C1-B320-3718F0C9EA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D192054A-1262-41C1-B320-3718F0C9EA6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E} = {E99A9348-9653-4776-968A-7B6932A114B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9D8608A-90D3-4FC9-9EDB-62ADFF7D857E}
