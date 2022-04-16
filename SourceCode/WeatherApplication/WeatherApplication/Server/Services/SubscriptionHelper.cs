@@ -17,7 +17,7 @@ namespace WeatherApplication.Server.Services
         public async Task<IEnumerable<ApplicationUser>> GetApplicationUsersAsync()
         {
             var users = _dbContext.Users.ToList();
-            return await Task.FromResult( users);
+            return await Task.FromResult(users);
         }
     }
 }

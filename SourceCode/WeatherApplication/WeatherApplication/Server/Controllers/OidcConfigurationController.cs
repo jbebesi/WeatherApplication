@@ -25,7 +25,7 @@ namespace WeatherApplication.Server.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error",ex);
+                _logger.LogError("Error", ex);
                 return BadRequest($"Error happened + {ex.Message}");
             }
         }

@@ -1,11 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 using WeatherApplication.Server.interfaces;
-using WeatherApplication.Shared.Dtos.Misc;
 
 namespace WeatherApplication.Server.Controllers
 {
@@ -18,7 +12,7 @@ namespace WeatherApplication.Server.Controllers
         private readonly ILogger<SubscriptionsController> _logger;
         private readonly ISubscriptionHelper _subscriptionHelper;
 
-        public SubscriptionsController(ILogger<SubscriptionsController> logger,ISubscriptionHelper subscriptionHelper)
+        public SubscriptionsController(ILogger<SubscriptionsController> logger, ISubscriptionHelper subscriptionHelper)
         {
             _logger = logger;
             _subscriptionHelper = subscriptionHelper;
@@ -36,7 +30,7 @@ namespace WeatherApplication.Server.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
-                return  BadRequest($"Message:{ex.Message}");
+                return BadRequest($"Message:{ex.Message}");
             }
         }
     }

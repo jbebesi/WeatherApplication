@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
 using WeatherApplication.Shared.Client.interfaces;
 using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Dtos.Weather;
@@ -18,7 +13,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
         private readonly HttpClient _httpClient;
         private readonly ILogger<ShowWeatherDataViewModel> _logger;
         private string selected;
-        
+
         public string SelectedCity
         {
             get => selected;
@@ -31,7 +26,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
 
         public ShowWeatherDataViewModel(HttpClient client, ILogger<ShowWeatherDataViewModel> logger)
         {
-            _httpClient = client ?? throw new ArgumentException("can not be null!",nameof(client));
+            _httpClient = client ?? throw new ArgumentException("can not be null!", nameof(client));
             _logger = logger ?? throw new ArgumentException("can not be null!", nameof(logger));
         }
 
@@ -44,7 +39,7 @@ namespace WeatherApplication.Shared.Client.ViewModels
             try
             {
                 var list = await _httpClient.GetFromJsonAsync<CityData[]>($"api/citylist/{filter}");
-                CityList.AddRange(list.Select(t => t.Text).Where(t=>!CityList.Contains(t)));
+                CityList.AddRange(list.Select(t => t.Text).Where(t => !CityList.Contains(t)));
             }
             catch (Exception ex)
             {

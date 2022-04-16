@@ -7,10 +7,10 @@
         public string ForecastUrl { get; set; }
         public string OneCallAPI { get; set; }
         public string CityPref { get; set; }
-        public string Metric { get; set; } 
+        public string Metric { get; set; }
         public string Lat { get; set; }
         public string Lon { get; set; }
-        
+
     }
     public class PositionOptions
     {

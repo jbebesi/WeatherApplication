@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WeatherApplication.Shared.Dtos.Weather
+﻿namespace WeatherApplication.Shared.Dtos.Weather
 {
     public struct WeatherData
     {

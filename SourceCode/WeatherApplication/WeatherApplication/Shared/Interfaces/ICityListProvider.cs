@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WeatherApplication.Shared.Dtos.Misc;
+﻿using WeatherApplication.Shared.Dtos.Misc;
 
 namespace WeatherApplication.Shared.Interfaces
 {

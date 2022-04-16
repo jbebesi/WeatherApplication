@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using WeatherApplication.Shared.Dtos.Misc;
+﻿using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Helpers;
 using WeatherApplication.Shared.Interfaces;
 

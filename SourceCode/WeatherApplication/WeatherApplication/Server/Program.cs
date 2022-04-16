@@ -1,18 +1,24 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
+using WeatherApplication.Server;
 using WeatherApplication.Server.Data;
-using WeatherApplication.Server.interfaces;
+using WeatherApplication.Server.Identity;
 using WeatherApplication.Server.Models;
-using WeatherApplication.Server.Services;
-using WeatherApplication.Shared.Dtos.OWM;
-using WeatherApplication.Shared.Interfaces;
-using WeatherApplication.Shared.Services;
-using WeatherApplication.Shared.Services.OWM;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
+
+Log.Information("Starting up");
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+    .Enrich.FromLogContext()
+    .ReadFrom.Configuration(ctx.Configuration));
+builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog());
+
+//Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -21,51 +27,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddIdentityServer()
-    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-builder.Services.AddAuthentication()
-    .AddIdentityServerJwt();
-    //.AddGoogle(options =>
-    //{
-    //    IConfigurationSection googleAuthNSection =
-    //    builder.Configuration.GetSection("Authentication:Google");
-    //    options.ClientId = googleAuthNSection["ClientId"];
-    //    options.ClientSecret = googleAuthNSection["ClientSecret"];
-    //});
+builder.Services.AddWettaIdentityServices();
+builder.WettaServices();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
-
-//builder.Services.AddOidcAuthentication(options => {
-//    builder.Configuration.Bind("Local", options.ProviderOptions);
-//});
-
-builder.Services.AddScoped<ISubscriptionHelper, SubscriptionHelper>();
-
-builder.Services.AddScoped<IWeatherService, WeatherService>();
-builder.Services.AddScoped<IWeatherDataStore, WeatherDataStore>();
-builder.Services.AddScoped<IWeatherProvider, ConnectOpenWeatherMap>(provider => new ConnectOpenWeatherMap(
-    provider.GetService<HttpClient>(),
-    provider.GetService<ILogger<ConnectOpenWeatherMap>>(), new OWMSettings()
-    {
-        APIKey = builder.Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.APIKey)}").Value,
-        OneCallAPI = builder.Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.OneCallAPI)}").Value,
-        ForecastUrl = builder.Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.ForecastUrl)}").Value,
-        CityPref = builder.Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.CityPref)}").Value,
-        Metric = builder.Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Metric)}").Value,
-        Lat = builder.Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Lat)}").Value,
-        Lon = builder.Configuration.GetSection($"{OWMSettings.Settings}:{nameof(OWMSettings.Lon)}").Value
-    }));
-builder.Services.AddScoped<ICityListProvider, CityListProvider>();
 builder.Services.AddScoped<HttpClient>();
-
-
-
-
-
-
 
 
 var app = builder.Build();
@@ -90,16 +57,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseIdentityServer();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseIdentityServer();
 
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
 
 app.Run();
-
-
-
