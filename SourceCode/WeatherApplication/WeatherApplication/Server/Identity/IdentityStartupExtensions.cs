@@ -1,4 +1,6 @@
-﻿namespace WeatherApplication.Server.Identity
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace WeatherApplication.Server.Identity
 {
     public static class IdentityStartupExtensions
     {

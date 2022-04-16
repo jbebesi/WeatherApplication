@@ -1,4 +1,8 @@
-﻿using WeatherApplication.Server.interfaces;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System.Net.Http;
+using WeatherApplication.Server.interfaces;
 using WeatherApplication.Server.Services;
 using WeatherApplication.Shared.Dtos.OWM;
 using WeatherApplication.Shared.Interfaces;

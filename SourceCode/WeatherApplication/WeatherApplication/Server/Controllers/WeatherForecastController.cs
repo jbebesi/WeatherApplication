@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Weather;
 using WeatherApplication.Shared.Interfaces;
 

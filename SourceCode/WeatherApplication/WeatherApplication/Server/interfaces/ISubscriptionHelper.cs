@@ -1,4 +1,6 @@
-﻿using WeatherApplication.Server.Models;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using WeatherApplication.Server.Models;
 
 namespace WeatherApplication.Server.interfaces
 {

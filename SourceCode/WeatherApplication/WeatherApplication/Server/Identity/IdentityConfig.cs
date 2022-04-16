@@ -1,5 +1,5 @@
 ﻿using Duende.IdentityServer.Models;
-
+using System.Collections.Generic;
 
 namespace WeatherApplication.Server.Identity
 {

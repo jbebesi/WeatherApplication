@@ -1,4 +1,8 @@
-﻿using WeatherApplication.Server.Data;
+﻿using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using WeatherApplication.Server.Data;
 using WeatherApplication.Server.interfaces;
 using WeatherApplication.Server.Models;
 

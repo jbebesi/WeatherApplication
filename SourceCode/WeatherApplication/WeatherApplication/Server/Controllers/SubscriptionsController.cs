@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 using WeatherApplication.Server.interfaces;
 
 namespace WeatherApplication.Server.Controllers
