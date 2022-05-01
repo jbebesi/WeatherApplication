@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TestTools\Client\TestClient.csproj" />
+    <ProjectReference Include="..\Client\WeatherApplication.Client.csproj" />
     <ProjectReference Include="..\Shared\WeatherApplication.Shared.csproj" />
   </ItemGroup>
 

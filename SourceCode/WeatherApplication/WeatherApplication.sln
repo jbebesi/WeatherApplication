@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Shared",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestTools", "TestTools", "{E99A9348-9653-4776-968A-7B6932A114B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "TestTools\Client\Client.csproj", "{13A7AA23-E8AE-433E-A944-8739F9D7E56E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestClient", "TestTools\Client\TestClient.csproj", "{13A7AA23-E8AE-433E-A944-8739F9D7E56E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -17,7 +17,7 @@ namespace WeatherApplication.Server.Identity
             {
             new Client
             {
-                ClientId = "BrowserClient",
+                ClientId = "TestClient",
                 // no interactive user, use the clientid/secret for authentication
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 // secret for authentication

@@ -4,6 +4,11 @@ using WeatherApplication.Server.Data;
 using WeatherApplication.Server.Identity;
 using WeatherApplication.Server.Models;
 using Serilog;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 

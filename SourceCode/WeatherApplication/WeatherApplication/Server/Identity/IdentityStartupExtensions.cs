@@ -11,9 +11,8 @@ namespace WeatherApplication.Server.Identity
                 .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
                 .AddInMemoryClients(IdentityConfig.Clients);
 
-
             services.AddAuthentication("Bearer")
-                .AddJwtBearer(options =>
+                .AddJwtBearer("Bearer", options =>
                 {
                     options.Authority = "https://localhost:5001";
                     options.TokenValidationParameters.ValidateAudience = false;
