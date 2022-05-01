@@ -20,16 +20,14 @@ if (disco.IsError)
 var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
 {
     Address = disco.TokenEndpoint,
-    ClientId = "BrowserClient",
+    ClientId = "TestClient",
     ClientSecret = "secret",
-
     Scope = "Weather"
 });
 
 if (tokenResponse.IsError)
 {
-    Console.WriteLine(tokenResponse.Error);
-    Console.WriteLine(tokenResponse.ErrorDescription);
+    Console.WriteLine($"Error: {tokenResponse.Error} Description: {tokenResponse.ErrorDescription}");
     return;
 }
 
@@ -47,7 +45,7 @@ try
     var response = await apiClient.GetAsync(cityUrl);
     if (!response.IsSuccessStatusCode)
     {
-        Console.WriteLine(response.StatusCode);
+        Console.WriteLine($"{response.StatusCode} content: {await response.Content.ReadAsStringAsync()}");
     }
     else
     {
