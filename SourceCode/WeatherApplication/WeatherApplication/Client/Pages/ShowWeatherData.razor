@@ -1,30 +1,41 @@
 @page "/showweatherdata"
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.Extensions.Logging
 
-@using WeatherApplication.Shared.Client.interfaces
 @inject IShowWeatherDataViewModel viewModel
 @inject IndexViewModel location
 @inject ILogger<ShowWeatherData> logger
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
-<EditForm Model="@viewModel">
-    <WeatherApplication.Client.Components.Combobox OptionsList=CityList ValueSelected="LoadForecast" UpdateOptionsList="UpdateCityList" />
-    @if (viewModel.Forecasts != null)
-    {
-        <h1 class="center">@viewModel.Forecasts.CityName ,@viewModel.Forecasts.CountryName</h1>
+@if (IsAuthenticated)
+{
+    <EditForm Model="@viewModel">
+        <WeatherApplication.Client.Components.Combobox OptionsList=CityList ValueSelected="LoadForecast" UpdateOptionsList="UpdateCityList" />
+        @if (viewModel.Forecasts != null)
+        {
+            <h1 class="center">@viewModel.Forecasts.CityName ,@viewModel.Forecasts.CountryName</h1>
 
-        <MainWeatherData ForecastData="@viewModel.Forecasts" />
-        <ForecastGrid Data="@viewModel.Forecasts.Weather" />
-    }
-</EditForm>
-
+            <MainWeatherData ForecastData="@viewModel.Forecasts" />
+            <ForecastGrid Data="@viewModel.Forecasts.Weather" />
+        }
+    </EditForm>
+}
+else
+{
+    <div>Not authenticated</div>
+}
 
 @code {
-
+    AuthenticationState AuthenticationState;
+    bool IsAuthenticated = false;
     IEnumerable<string>? CityList;
     static Action<string>? LoadForecast;
 
     protected override async Task OnInitializedAsync()
     {
+        AuthenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        if(AuthenticationState != null)
+            IsAuthenticated = AuthenticationState.User.Identity.IsAuthenticated;
         CityList = await viewModel.GetCityList();
         if(location.Location != null)
         {

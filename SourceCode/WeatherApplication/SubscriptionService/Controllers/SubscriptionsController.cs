@@ -27,9 +27,9 @@ namespace SubscriptionService.Controllers
             {
                 return _iSubscriptionInterface.GetSubscription("");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                _logger.LogWarning(ex.Message,ex);
+                _logger.LogWarning(ex.Message, ex);
                 return null;
             }
         }

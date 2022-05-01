@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 /SourceCode/WeatherApplication/runSonar.bat
 /SourceCode/WeatherApplication/WeatherApplication/Server/appsettings.Me.json
+/SourceCode/WeatherApplication/WeatherApplication/Server/tempkey.jwk

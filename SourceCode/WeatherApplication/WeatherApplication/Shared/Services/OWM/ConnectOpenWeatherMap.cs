@@ -1,10 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.Net.Http;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Dtos.OWM;
 using WeatherApplication.Shared.Dtos.Weather;
@@ -19,12 +15,12 @@ namespace WeatherApplication.Shared.Services.OWM
         private readonly ILogger<ConnectOpenWeatherMap> _logger;
 
         private readonly HttpClient _httpClient;
-         
+
         public ConnectOpenWeatherMap(HttpClient httpClient, ILogger<ConnectOpenWeatherMap> logger, OWMSettings settings)
         {
             _logger = logger;
             _httpClient = httpClient;
-            _settings = settings; 
+            _settings = settings;
         }
 
         public async Task<WeatherData> GetCityData(string name)

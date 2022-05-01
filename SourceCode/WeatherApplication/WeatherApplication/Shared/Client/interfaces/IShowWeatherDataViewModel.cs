@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WeatherApplication.Shared.Dtos.Weather;
+﻿using WeatherApplication.Shared.Dtos.Weather;
 
 namespace WeatherApplication.Shared.Client.interfaces
 {

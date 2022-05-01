@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WeatherApplication.Shared.Dtos.Misc
+﻿namespace WeatherApplication.Shared.Dtos.Misc
 {
     public struct LocationData
     {
