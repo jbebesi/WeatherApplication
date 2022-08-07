@@ -1,34 +1,47 @@
 ﻿@page "/subscriptionpage"
 @using Microsoft.Extensions.Logging
 @using WeatherApplication.Shared.Dtos.Misc
+@using Microsoft.AspNetCore.Authorization
 @inject HttpClient Http
 @inject ILogger<SubscriptionPage> _logger
-
+@attribute [AllowAnonymous]
 <h1>This is your subscriptions page!2</h1>
 
 @if (subscriptions != null)
 {
-    <div>
-    @subscriptions.FirstName ,
-    @subscriptions.LastName ,
-    @subscriptions.SubscriberUntil 
-    </div>
+    @foreach (var user in subscriptions)
+    {
+        <div>
+            @user.Email,
+            @user.Id,
+            @user.UserName
+        </div>
+    }
+
 }
 
 
 
 @code {
-    private Subscription? subscriptions;
+    private IEnumerable<User>? subscriptions;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            subscriptions = await Http.GetFromJsonAsync<Subscription>("Subscriptions");
+            subscriptions = await Http.GetFromJsonAsync<IEnumerable<User>>("Subscriptions");
         }
         catch(Exception ex)
         {
             _logger.LogError(ex.Message, ex);
         }
+    }
+
+    private class User
+    {
+        public string UserName{ get; set; }
+        public string Email { get; set; }
+        public string Id{ get; set; }
+
     }
 }

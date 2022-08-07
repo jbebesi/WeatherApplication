@@ -5,7 +5,7 @@ namespace WeatherApplication.Shared.Interfaces
 {
     public interface IWeatherService
     {
-        public Task<WeatherForecastData> GetWeatherForecastsAsync(string city);
+        Task<WeatherForecastData> GetWeatherForecastsAsync(string city);
 
     }
 }

@@ -38,5 +38,10 @@ namespace WeatherApplication.Shared.Services
             _storedWeatherData.Add(city, Tuple.Create(updated, DateTime.Now));
             return updated;
         }
+
+        Task<WeatherForecastData> IWeatherDataStore.GetWeatherForecastsAsync(string city)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

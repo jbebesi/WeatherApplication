@@ -39,14 +39,14 @@ namespace WeatherApplication.Shared.Dtos.Weather
         {
             get
             {
-                return data switch
+                switch (data)
                 {
-                    DataType.Temperature => Temperature,
-                    DataType.Wind => WindSpeed,
-                    DataType.TemperatureFeelsLike => TemperatureFeelsLike,
-                    DataType.WindDirection => (int)WindDirection,
-                    _ => throw new ArgumentException("Argument not supported:" + data.ToString()),
-                };
+                    case DataType.Temperature: return Temperature;
+                    case DataType.Wind: return WindSpeed;
+                    case DataType.TemperatureFeelsLike: return TemperatureFeelsLike;
+                    case DataType.WindDirection:                        return (int)WindDirection;
+                    default: throw new ArgumentException("Argument not supported:" + data.ToString());
+                }
             }
         }
     }

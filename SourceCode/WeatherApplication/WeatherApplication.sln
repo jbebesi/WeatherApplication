@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Client", "WeatherApplication\Client\WeatherApplication.Client.csproj", "{DD0FEE92-1101-4945-A557-9612F7C1B07D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Server", "WeatherApplication\Server\WeatherApplication.Server.csproj", "{C43552D8-5126-4F51-A8AD-A4753B9E41ED}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Shared", "WeatherApplication\Shared\WeatherApplication.Shared.csproj", "{0E20E750-4C46-4054-A766-F6E68D3A5E0E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubscriptionService", "SubscriptionService\SubscriptionService.csproj", "{C4EF4C01-02FD-44C0-912D-7E092393ED2D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.ServerTests", "WeatherApplication\WeatherApplication.ServerTests\WeatherApplication.ServerTests.csproj", "{39392458-4344-4535-B8F0-D6DB10DEF215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Server", "WeatherApplication\Server\WeatherApplication.Server.csproj", "{49359D9B-C788-47DD-8EB6-84735A357D0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApplication.SharedTests", "WeatherApplication\WeatherApplication.SharedTests\WeatherApplication.SharedTests.csproj", "{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Client", "WeatherApplication\Client\WeatherApplication.Client.csproj", "{B15B59A6-096A-4C17-B473-637C52C3E2C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApplication.Shared", "WeatherApplication\Shared\WeatherApplication.Shared.csproj", "{D192054A-1262-41C1-B320-3718F0C9EA6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestTools", "TestTools", "{E99A9348-9653-4776-968A-7B6932A114B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestClient", "TestTools\Client\TestClient.csproj", "{13A7AA23-E8AE-433E-A944-8739F9D7E56E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,33 +21,32 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DD0FEE92-1101-4945-A557-9612F7C1B07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD0FEE92-1101-4945-A557-9612F7C1B07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD0FEE92-1101-4945-A557-9612F7C1B07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD0FEE92-1101-4945-A557-9612F7C1B07D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C43552D8-5126-4F51-A8AD-A4753B9E41ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C43552D8-5126-4F51-A8AD-A4753B9E41ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C43552D8-5126-4F51-A8AD-A4753B9E41ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C43552D8-5126-4F51-A8AD-A4753B9E41ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E20E750-4C46-4054-A766-F6E68D3A5E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E20E750-4C46-4054-A766-F6E68D3A5E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E20E750-4C46-4054-A766-F6E68D3A5E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E20E750-4C46-4054-A766-F6E68D3A5E0E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C4EF4C01-02FD-44C0-912D-7E092393ED2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4EF4C01-02FD-44C0-912D-7E092393ED2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4EF4C01-02FD-44C0-912D-7E092393ED2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4EF4C01-02FD-44C0-912D-7E092393ED2D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39392458-4344-4535-B8F0-D6DB10DEF215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39392458-4344-4535-B8F0-D6DB10DEF215}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39392458-4344-4535-B8F0-D6DB10DEF215}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39392458-4344-4535-B8F0-D6DB10DEF215}.Release|Any CPU.Build.0 = Release|Any CPU
-		{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{002A2B02-FD64-47F4-AD8F-6B2B15E06F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49359D9B-C788-47DD-8EB6-84735A357D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49359D9B-C788-47DD-8EB6-84735A357D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49359D9B-C788-47DD-8EB6-84735A357D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49359D9B-C788-47DD-8EB6-84735A357D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15B59A6-096A-4C17-B473-637C52C3E2C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15B59A6-096A-4C17-B473-637C52C3E2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15B59A6-096A-4C17-B473-637C52C3E2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15B59A6-096A-4C17-B473-637C52C3E2C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D192054A-1262-41C1-B320-3718F0C9EA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D192054A-1262-41C1-B320-3718F0C9EA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D192054A-1262-41C1-B320-3718F0C9EA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D192054A-1262-41C1-B320-3718F0C9EA6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{13A7AA23-E8AE-433E-A944-8739F9D7E56E} = {E99A9348-9653-4776-968A-7B6932A114B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9D8608A-90D3-4FC9-9EDB-62ADFF7D857E}
