@@ -1,4 +1,6 @@
-﻿namespace WeatherApplication.Shared.Dtos.OWM
+﻿using System.Collections.Generic;
+
+namespace WeatherApplication.Shared.Dtos.OWM
 {
 
     public class Current

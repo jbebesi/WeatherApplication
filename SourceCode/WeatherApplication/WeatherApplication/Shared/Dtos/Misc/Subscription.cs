@@ -1,4 +1,6 @@
-﻿namespace WeatherApplication.Shared.Dtos.Misc
+﻿using System;
+
+namespace WeatherApplication.Shared.Dtos.Misc
 {
     public class Subscription
     {

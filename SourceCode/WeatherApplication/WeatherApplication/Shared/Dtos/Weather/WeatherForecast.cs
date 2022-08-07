@@ -1,4 +1,6 @@
-﻿namespace WeatherApplication.Shared.Dtos.Weather
+﻿using System;
+
+namespace WeatherApplication.Shared.Dtos.Weather
 {
     public class WeatherForecast
     {

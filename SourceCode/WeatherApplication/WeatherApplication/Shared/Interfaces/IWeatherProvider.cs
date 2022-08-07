@@ -1,4 +1,5 @@
-﻿using WeatherApplication.Shared.Dtos.Misc;
+﻿using System.Threading.Tasks;
+using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Dtos.Weather;
 
 namespace WeatherApplication.Shared.Interfaces

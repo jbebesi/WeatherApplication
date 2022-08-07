@@ -1,9 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System.Net.Http.Json;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Misc;
 using WeatherApplication.Shared.Dtos.OWM;
 using WeatherApplication.Shared.Dtos.Weather;
+using WeatherApplication.Shared.Helpers;
 using WeatherApplication.Shared.Interfaces;
 
 namespace WeatherApplication.Shared.Services.OWM

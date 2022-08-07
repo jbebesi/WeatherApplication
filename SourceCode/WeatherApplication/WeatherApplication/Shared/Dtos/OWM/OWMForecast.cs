@@ -1,4 +1,7 @@
-﻿using WeatherApplication.Shared.Dtos.Weather;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using WeatherApplication.Shared.Dtos.Weather;
 
 namespace WeatherApplication.Shared.Dtos.OWM
 {

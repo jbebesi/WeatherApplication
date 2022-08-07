@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using WeatherApplication.Shared.Dtos.Weather;
 using WeatherApplication.Shared.Interfaces;
 
@@ -34,6 +37,11 @@ namespace WeatherApplication.Shared.Services
             var updated = await _weatherProvider.GetCityForecast(city);
             _storedWeatherData.Add(city, Tuple.Create(updated, DateTime.Now));
             return updated;
+        }
+
+        Task<WeatherForecastData> IWeatherDataStore.GetWeatherForecastsAsync(string city)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
